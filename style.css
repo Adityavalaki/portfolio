@@ -346,7 +346,7 @@ h1, h2, h3, h4 { font-family: var(--font-heading); font-weight: 700; color: var(
      The visible orbital line is at the *center* of the 2px border, i.e. 1px
      above the inner edge. margin-top:-1px shifts the pill so its vertical
      center aligns precisely with that line. */
-  top: 0; left: 50%; margin-top: 0 px;
+  top: 5; left: 50%; margin-top: -1 px;
   transform: translate(-50%, -50%);
   font-size: 1.35rem; line-height: 1;
   background: #FFFFFF;
