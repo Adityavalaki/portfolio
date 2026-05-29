@@ -13,66 +13,9 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => loader.classList.add('done'), 2200);
   }
 
-  /* ----------------------------------------------------------
-     Custom cursor (fine pointers only) + smooth follow
-  ---------------------------------------------------------- */
-  const cursorDot = document.getElementById('cursor-dot');
-  const cursorOutline = document.getElementById('cursor-outline');
-
-  if (finePointer && !prefersReduced && cursorDot && cursorOutline) {
-    let mouseX = window.innerWidth / 2, mouseY = window.innerHeight / 2;
-    let outlineX = mouseX, outlineY = mouseY;
-
-    window.addEventListener('mousemove', (e) => {
-      mouseX = e.clientX; mouseY = e.clientY;
-      cursorDot.style.transform = `translate(${mouseX}px, ${mouseY}px) translate(-50%, -50%)`;
-    });
-
-    const renderCursor = () => {
-      outlineX += (mouseX - outlineX) * 0.18;
-      outlineY += (mouseY - outlineY) * 0.18;
-      cursorOutline.style.transform = `translate(${outlineX}px, ${outlineY}px) translate(-50%, -50%)`;
-      requestAnimationFrame(renderCursor);
-    };
-    renderCursor();
-
-    document.querySelectorAll('a, button, .glass-card, .highlight-card, .tag, .magnetic')
-      .forEach(el => {
-        el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
-        el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
-      });
-  } else {
-    if (cursorDot) cursorDot.remove();
-    if (cursorOutline) cursorOutline.remove();
-  }
-
-  /* ----------------------------------------------------------
-     Gentle magnetic buttons (subtle, fine pointers only)
-  ---------------------------------------------------------- */
-  if (finePointer && !prefersReduced) {
-    document.querySelectorAll('.magnetic').forEach(el => {
-      el.addEventListener('mousemove', (e) => {
-        const r = el.getBoundingClientRect();
-        const x = e.clientX - r.left - r.width / 2;
-        const y = e.clientY - r.top - r.height / 2;
-        el.style.transform = `translate(${x * 0.18}px, ${y * 0.28}px)`;
-      });
-      el.addEventListener('mouseleave', () => { el.style.transform = 'translate(0, 0)'; });
-    });
-  }
-
-  /* ----------------------------------------------------------
-     Card spotlight — track cursor inside cards
-  ---------------------------------------------------------- */
-  if (finePointer) {
-    document.querySelectorAll('.glass-card, .project-img').forEach(card => {
-      card.addEventListener('mousemove', (e) => {
-        const r = card.getBoundingClientRect();
-        card.style.setProperty('--mx', `${e.clientX - r.left}px`);
-        card.style.setProperty('--my', `${e.clientY - r.top}px`);
-      });
-    });
-  }
+  // (Custom cursor, magnetic buttons, and card spotlight were removed
+  // when we switched to the editorial light theme. Native cursor + still
+  // surfaces fit the design philosophy better.)
 
   /* ----------------------------------------------------------
      Scroll progress bar
@@ -120,22 +63,6 @@ document.addEventListener('DOMContentLoaded', () => {
     drawTimeline();
   } else if (timeline) {
     timeline.style.setProperty('--draw', '100%');
-  }
-
-  /* ----------------------------------------------------------
-     Subtle parallax on ambient orbs (fine pointers)
-  ---------------------------------------------------------- */
-  if (finePointer && !prefersReduced) {
-    const orbs = document.querySelectorAll('.bg-orb');
-    window.addEventListener('mousemove', (e) => {
-      const dx = (e.clientX / window.innerWidth - 0.5);
-      const dy = (e.clientY / window.innerHeight - 0.5);
-      orbs.forEach((orb, i) => {
-        const depth = (i + 1) * 14;
-        orb.style.marginLeft = `${dx * depth}px`;
-        orb.style.marginTop = `${dy * depth}px`;
-      });
-    });
   }
 
   /* ----------------------------------------------------------
