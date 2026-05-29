@@ -199,21 +199,26 @@ document.addEventListener('DOMContentLoaded', () => {
       const email = document.getElementById('contactEmail').value;
       const message = document.getElementById('contactMessage').value;
 
-      const whatsappNumber = '918866215250';
+      const whatsappNumber = '918866215250'; // +91 8866215250
       const text = `*New Contact Form Submission*\n\n*Name:* ${name}\n*Email:* ${email}\n*Message:* ${message}`;
       const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
 
       const btn = form.querySelector('button[type="submit"]');
       const originalText = btn.innerHTML;
-      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
 
-      setTimeout(() => {
-        window.open(whatsappUrl, '_blank');
-        btn.innerHTML = '<i class="fas fa-check"></i> Redirecting to WhatsApp!';
-        btn.style.background = 'linear-gradient(135deg, var(--emerald), #10b981)';
-        form.reset();
-        setTimeout(() => { btn.innerHTML = originalText; btn.style.background = ''; }, 3000);
-      }, 400);
+      // Open WhatsApp synchronously, inside the click gesture, so popup
+      // blockers don't swallow it. Fall back to a same-tab redirect if the
+      // new tab is blocked.
+      const win = window.open(whatsappUrl, '_blank');
+      if (!win || win.closed || typeof win.closed === 'undefined') {
+        window.location.href = whatsappUrl;
+        return;
+      }
+
+      btn.innerHTML = '<i class="fas fa-check"></i> Opening WhatsApp…';
+      btn.style.background = 'linear-gradient(135deg, var(--emerald), #10b981)';
+      form.reset();
+      setTimeout(() => { btn.innerHTML = originalText; btn.style.background = ''; }, 3000);
     });
   }
 
