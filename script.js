@@ -189,31 +189,67 @@ document.addEventListener('DOMContentLoaded', () => {
   counters.forEach(el => countObserver.observe(el));
 
   /* ----------------------------------------------------------
-     Contact form -> WhatsApp
+     Contact form -> Email (Web3Forms) + WhatsApp
   ---------------------------------------------------------- */
+
+  // 🔑 SETUP STEP — get a free Web3Forms access key (takes 30 seconds):
+  //   1. Visit https://web3forms.com/
+  //   2. Enter adityavalaki1110@gmail.com → click "Create Access Key"
+  //   3. Check that inbox → copy the key from the welcome email
+  //   4. Paste it below, replacing YOUR_WEB3FORMS_ACCESS_KEY
+  // Until you replace the placeholder, the form will still open WhatsApp
+  // but won't email you a copy.
+  const WEB3FORMS_ACCESS_KEY = 'YOUR_WEB3FORMS_ACCESS_KEY';
+  const NOTIFY_EMAIL = 'adityavalaki1110@gmail.com';
+
   const form = document.getElementById('contactForm');
   if (form) {
     form.addEventListener('submit', (e) => {
       e.preventDefault();
-      const name = document.getElementById('contactName').value;
-      const email = document.getElementById('contactEmail').value;
-      const message = document.getElementById('contactMessage').value;
+      const name = document.getElementById('contactName').value.trim();
+      const email = document.getElementById('contactEmail').value.trim();
+      const message = document.getElementById('contactMessage').value.trim();
 
-      const whatsappNumber = '918866215250';
+      // ---- 1. Open WhatsApp synchronously (inside the click gesture so
+      //         popup blockers don't swallow it). ----
+      const whatsappNumber = '918866215250'; // +91 8866215250
       const text = `*New Contact Form Submission*\n\n*Name:* ${name}\n*Email:* ${email}\n*Message:* ${message}`;
       const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
+      const waWin = window.open(whatsappUrl, '_blank');
 
+      // ---- 2. Fire-and-forget email via Web3Forms in the background. ----
+      if (WEB3FORMS_ACCESS_KEY && WEB3FORMS_ACCESS_KEY !== 'YOUR_WEB3FORMS_ACCESS_KEY') {
+        fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify({
+            access_key: WEB3FORMS_ACCESS_KEY,
+            to: NOTIFY_EMAIL,
+            from_name: 'Portfolio Contact Form',
+            subject: `New portfolio message from ${name}`,
+            name,
+            email,
+            message,
+            replyto: email,
+            botcheck: '',
+          }),
+        }).catch(() => { /* silent — WhatsApp still went through */ });
+      }
+
+      // ---- 3. UI feedback / fallback. ----
       const btn = form.querySelector('button[type="submit"]');
       const originalText = btn.innerHTML;
-      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
 
-      setTimeout(() => {
-        window.open(whatsappUrl, '_blank');
-        btn.innerHTML = '<i class="fas fa-check"></i> Redirecting to WhatsApp!';
-        btn.style.background = 'linear-gradient(135deg, var(--emerald), #10b981)';
-        form.reset();
-        setTimeout(() => { btn.innerHTML = originalText; btn.style.background = ''; }, 3000);
-      }, 400);
+      if (!waWin || waWin.closed || typeof waWin.closed === 'undefined') {
+        // Popup blocked — fall back to same-tab WhatsApp redirect.
+        window.location.href = whatsappUrl;
+        return;
+      }
+
+      btn.innerHTML = '<i class="fas fa-check"></i> Message sent — opening WhatsApp…';
+      btn.style.background = 'linear-gradient(135deg, var(--emerald), #10b981)';
+      form.reset();
+      setTimeout(() => { btn.innerHTML = originalText; btn.style.background = ''; }, 3500);
     });
   }
 
