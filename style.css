@@ -273,25 +273,66 @@ h1, h2, h3, h4 { font-family: var(--font-heading); font-weight: 700; color: var(
 .avatar-glass::before { display: none; }
 .avatar-glass img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
 
-.orbit { position: absolute; top: 50%; left: 50%; transform-origin: center; animation: orbitAnim linear infinite; }
-.orbit-1 { width: 320px; height: 320px; margin: -160px 0 0 -160px; border: 1px dashed rgba(26,26,26,0.16); border-radius: 50%; animation-duration: 22s; }
-.orbit-2 { width: 410px; height: 410px; margin: -205px 0 0 -205px; border: 1px dashed rgba(26,26,26,0.13); border-radius: 50%; animation-duration: 32s; animation-direction: reverse; }
-.orbit-3 { width: 500px; height: 500px; margin: -250px 0 0 -250px; border: 1px dashed rgba(26,26,26,0.10); border-radius: 50%; animation-duration: 44s; }
+/* Highlighted orbital paths — thicker, teal-tinted, layered alphas */
+.orbit {
+  position: absolute; top: 50%; left: 50%; transform-origin: center;
+  animation: orbitAnim linear infinite;
+  border-radius: 50%;
+}
+.orbit-1 {
+  width: 320px; height: 320px; margin: -160px 0 0 -160px;
+  border: 1.5px dashed rgba(74, 124, 126, 0.55);
+  animation-duration: 22s;
+  box-shadow: inset 0 0 28px rgba(74, 124, 126, 0.06);
+}
+.orbit-2 {
+  width: 410px; height: 410px; margin: -205px 0 0 -205px;
+  border: 1.5px dashed rgba(74, 124, 126, 0.38);
+  animation-duration: 32s; animation-direction: reverse;
+}
+.orbit-3 {
+  width: 500px; height: 500px; margin: -250px 0 0 -250px;
+  border: 1.5px dashed rgba(74, 124, 126, 0.22);
+  animation-duration: 44s;
+}
 
-/* High-contrast tech pills — solid charcoal on cream, white icons */
+/* Brand-colored tech pills on clean white — instant recognition */
 .tech-icon {
   position: absolute; top: 0; left: 50%; transform: translate(-50%, -50%);
-  font-size: 1.15rem; background: var(--text-primary); padding: 0; border-radius: 50%;
-  border: 2px solid var(--bg-primary);
-  color: #fff !important;
-  width: 48px; height: 48px;
+  font-size: 1.5rem;
+  background: #FFFFFF;
+  border: 1px solid rgba(26, 26, 26, 0.08);
+  /* NO !important — lets inline brand colors (style="color:#3b82f6") show */
+  width: 56px; height: 56px;
   display: inline-flex; align-items: center; justify-content: center;
-  box-shadow: var(--shadow-pill);
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 1px rgba(26,26,26,0.04),
+    0 2px 4px rgba(26,26,26,0.08),
+    0 12px 28px rgba(26,26,26,0.18);
 }
-/* per-icon accent ring so each pill has identity but stays on-palette */
-.orbit-1 .tech-icon { box-shadow: var(--shadow-pill), 0 0 0 4px rgba(74, 124, 126, 0.14); }
-.orbit-2 .tech-icon { box-shadow: var(--shadow-pill), 0 0 0 4px rgba(74, 124, 126, 0.10); }
-.orbit-3 .tech-icon { box-shadow: var(--shadow-pill), 0 0 0 4px rgba(74, 124, 126, 0.06); }
+/* Soft teal halo around each pill — gives them satellite presence */
+.orbit-1 .tech-icon {
+  box-shadow:
+    0 0 0 4px rgba(74, 124, 126, 0.18),
+    0 0 0 5px rgba(26,26,26,0.06),
+    0 4px 8px rgba(26,26,26,0.12),
+    0 16px 36px rgba(26,26,26,0.22);
+}
+.orbit-2 .tech-icon {
+  box-shadow:
+    0 0 0 4px rgba(74, 124, 126, 0.12),
+    0 0 0 5px rgba(26,26,26,0.05),
+    0 4px 8px rgba(26,26,26,0.10),
+    0 14px 30px rgba(26,26,26,0.18);
+}
+.orbit-3 .tech-icon {
+  box-shadow:
+    0 0 0 4px rgba(74, 124, 126, 0.08),
+    0 0 0 5px rgba(26,26,26,0.04),
+    0 4px 8px rgba(26,26,26,0.08),
+    0 12px 24px rgba(26,26,26,0.14);
+}
 @keyframes orbitAnim { 100% { transform: rotate(360deg); } }
 
 /* Scroll cue */
