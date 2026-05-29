@@ -199,7 +199,7 @@ document.addEventListener('DOMContentLoaded', () => {
   //   4. Paste it below, replacing YOUR_WEB3FORMS_ACCESS_KEY
   // Until you replace the placeholder, the form will still open WhatsApp
   // but won't email you a copy.
-  const WEB3FORMS_ACCESS_KEY = 'YOUR_WEB3FORMS_ACCESS_KEY';
+  const WEB3FORMS_ACCESS_KEY = '9bccc536-0da5-42b4-bd2e-66e7baf5aab6';
   const NOTIFY_EMAIL = 'adityavalaki1110@gmail.com';
 
   const form = document.getElementById('contactForm');
