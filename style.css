@@ -317,7 +317,7 @@ h1, h2, h3, h4 { font-family: var(--font-heading); font-weight: 700; color: var(
 .avatar-glass::before { display: none; }
 .avatar-glass img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
 
-/* Highlighted orbital paths — thicker, teal-tinted, layered alphas */
+/* Highlighted orbital paths — clean solid teal rings, easy to read alignment */
 .orbit {
   position: absolute; top: 50%; left: 50%; transform-origin: center;
   animation: orbitAnim linear infinite;
@@ -325,62 +325,43 @@ h1, h2, h3, h4 { font-family: var(--font-heading); font-weight: 700; color: var(
 }
 .orbit-1 {
   width: 320px; height: 320px; margin: -160px 0 0 -160px;
-  border: 1.5px dashed rgba(74, 124, 126, 0.55);
+  border: 2px solid rgba(74, 124, 126, 0.50);
   animation-duration: 22s;
-  box-shadow: inset 0 0 28px rgba(74, 124, 126, 0.06);
 }
 .orbit-2 {
   width: 410px; height: 410px; margin: -205px 0 0 -205px;
-  border: 1.5px dashed rgba(74, 124, 126, 0.38);
+  border: 2px solid rgba(74, 124, 126, 0.32);
   animation-duration: 32s; animation-direction: reverse;
 }
 .orbit-3 {
   width: 500px; height: 500px; margin: -250px 0 0 -250px;
-  border: 1.5px dashed rgba(74, 124, 126, 0.22);
+  border: 2px solid rgba(74, 124, 126, 0.20);
   animation-duration: 44s;
 }
 
-/* Brand-colored tech pills on clean white — instant recognition */
+/* Brand-colored tech pills — center sits EXACTLY on the orbital line */
 .tech-icon {
-  position: absolute; top: 0; left: 50%; transform: translate(-50%, -50%);
-  font-size: 1.4rem; line-height: 1;
+  position: absolute;
+  /* With box-sizing:border-box, top:0 puts pill top at the inner border edge.
+     The visible orbital line is at the *center* of the 2px border, i.e. 1px
+     above the inner edge. margin-top:-1px shifts the pill so its vertical
+     center aligns precisely with that line. */
+  top: 0; left: 50%; margin-top: -1px;
+  transform: translate(-50%, -50%);
+  font-size: 1.35rem; line-height: 1;
   background: #FFFFFF;
-  border: 1px solid rgba(26, 26, 26, 0.08);
-  width: 54px; height: 54px;
+  border: 1.5px solid rgba(26, 26, 26, 0.10);
+  width: 50px; height: 50px;
   display: flex; align-items: center; justify-content: center; text-align: center;
   border-radius: 50%;
-  padding: 0; margin: 0;
+  padding: 0;
+  /* Clean drop shadow — no halo blur. Crisp pill edge on the orbit line. */
   box-shadow:
-    0 0 0 1px rgba(26,26,26,0.04),
-    0 2px 4px rgba(26,26,26,0.08),
-    0 12px 28px rgba(26,26,26,0.18);
+    0 2px 6px rgba(26, 26, 26, 0.08),
+    0 10px 24px rgba(26, 26, 26, 0.18);
 }
-.tech-icon::before { /* the FA glyph — explicit centering */
-  display: block; line-height: 1; vertical-align: middle;
-}
+.tech-icon::before { display: block; line-height: 1; }
 .tech-icon > svg { display: block; margin: auto; }
-/* Soft teal halo around each pill — gives them satellite presence */
-.orbit-1 .tech-icon {
-  box-shadow:
-    0 0 0 4px rgba(74, 124, 126, 0.18),
-    0 0 0 5px rgba(26,26,26,0.06),
-    0 4px 8px rgba(26,26,26,0.12),
-    0 16px 36px rgba(26,26,26,0.22);
-}
-.orbit-2 .tech-icon {
-  box-shadow:
-    0 0 0 4px rgba(74, 124, 126, 0.12),
-    0 0 0 5px rgba(26,26,26,0.05),
-    0 4px 8px rgba(26,26,26,0.10),
-    0 14px 30px rgba(26,26,26,0.18);
-}
-.orbit-3 .tech-icon {
-  box-shadow:
-    0 0 0 4px rgba(74, 124, 126, 0.08),
-    0 0 0 5px rgba(26,26,26,0.04),
-    0 4px 8px rgba(26,26,26,0.08),
-    0 12px 24px rgba(26,26,26,0.14);
-}
 @keyframes orbitAnim { 100% { transform: rotate(360deg); } }
 
 /* Scroll cue */
