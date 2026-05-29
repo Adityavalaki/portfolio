@@ -13,9 +13,39 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => loader.classList.add('done'), 2200);
   }
 
-  // (Custom cursor, magnetic buttons, and card spotlight were removed
-  // when we switched to the editorial light theme. Native cursor + still
-  // surfaces fit the design philosophy better.)
+  /* ----------------------------------------------------------
+     Custom cursor — teal dot + outline with hover color shift
+  ---------------------------------------------------------- */
+  const cursorDot = document.getElementById('cursor-dot');
+  const cursorOutline = document.getElementById('cursor-outline');
+
+  if (finePointer && !prefersReduced && cursorDot && cursorOutline) {
+    let mouseX = window.innerWidth / 2, mouseY = window.innerHeight / 2;
+    let outlineX = mouseX, outlineY = mouseY;
+
+    window.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX; mouseY = e.clientY;
+      cursorDot.style.transform = `translate(${mouseX}px, ${mouseY}px) translate(-50%, -50%)`;
+    });
+
+    const renderCursor = () => {
+      outlineX += (mouseX - outlineX) * 0.18;
+      outlineY += (mouseY - outlineY) * 0.18;
+      cursorOutline.style.transform = `translate(${outlineX}px, ${outlineY}px) translate(-50%, -50%)`;
+      requestAnimationFrame(renderCursor);
+    };
+    renderCursor();
+
+    // Color-shift on interactive elements
+    document.querySelectorAll('a, button, .glass-card, .highlight-card, .project-card, .tag, .timeline-item, input, textarea')
+      .forEach(el => {
+        el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+        el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+      });
+  } else {
+    if (cursorDot) cursorDot.remove();
+    if (cursorOutline) cursorOutline.remove();
+  }
 
   /* ----------------------------------------------------------
      Scroll progress bar

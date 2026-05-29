@@ -26,9 +26,10 @@
   --border-color: rgba(26, 26, 26, 0.14);
   --border-strong: rgba(26, 26, 26, 0.28);
 
-  /* Shadows — real depth on cards */
-  --shadow-card: 0 1px 2px rgba(26,26,26,0.04), 0 8px 24px rgba(26,26,26,0.06);
-  --shadow-card-hover: 0 4px 12px rgba(26,26,26,0.08), 0 20px 40px rgba(26,26,26,0.10);
+  /* Shadows — real, layered depth */
+  --shadow-card: 0 1px 2px rgba(26,26,26,0.06), 0 8px 18px rgba(26,26,26,0.08), 0 16px 40px rgba(26,26,26,0.06);
+  --shadow-card-hover: 0 4px 8px rgba(26,26,26,0.10), 0 16px 32px rgba(26,26,26,0.14), 0 32px 60px rgba(26,26,26,0.10);
+  --shadow-pill: 0 2px 4px rgba(26,26,26,0.10), 0 8px 20px rgba(26,26,26,0.16);
 
   /* Type stack */
   --font-heading: 'Space Grotesk', sans-serif;
@@ -100,9 +101,42 @@ img { max-width: 100%; display: block; }
 }
 
 /* ============================================================
-   Cursor — removed for minimal aesthetic
+   Custom cursor — teal dot + outline, color-shifts on hover
    ============================================================ */
-.cursor-dot, .cursor-outline { display: none !important; }
+@media (hover: hover) and (pointer: fine) {
+  body { cursor: none; }
+  a, button, input, textarea, .tag, .glass-card, .project-card, .highlight-card, .timeline-item { cursor: none; }
+}
+.cursor-dot {
+  width: 8px; height: 8px; background: var(--accent); border-radius: 50%;
+  position: fixed; top: 0; left: 0; pointer-events: none; z-index: 9999;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 0 3px rgba(74, 124, 126, 0.18);
+  transition: width 0.25s var(--ease-spring), height 0.25s var(--ease-spring), background 0.25s, opacity 0.2s;
+}
+.cursor-outline {
+  width: 38px; height: 38px;
+  border: 1.5px solid var(--accent); border-radius: 50%;
+  background: rgba(74, 124, 126, 0.05);
+  position: fixed; top: 0; left: 0; pointer-events: none; z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s var(--ease-spring), height 0.3s var(--ease-spring),
+              background 0.3s, border-color 0.3s, border-width 0.3s;
+}
+/* HOVER STATE — clear color shift so the effect is obvious */
+.cursor-hover .cursor-outline {
+  width: 64px; height: 64px;
+  border-width: 2px;
+  border-color: var(--accent-soft);
+  background: rgba(74, 124, 126, 0.18);
+}
+.cursor-hover .cursor-dot {
+  width: 0; height: 0;
+  background: var(--accent-soft);
+}
+@media (hover: none), (pointer: coarse) {
+  .cursor-dot, .cursor-outline { display: none; }
+}
 
 /* ============================================================
    Decorative ambient — hard off in light theme
@@ -227,25 +261,37 @@ h1, h2, h3, h4 { font-family: var(--font-heading); font-weight: 700; color: var(
 .tech-stack-sphere { position: relative; width: 360px; height: 360px; }
 .avatar-glass {
   position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-  width: 250px; height: 250px; border-radius: 50%; padding: 6px;
+  width: 260px; height: 260px; border-radius: 50%; padding: 8px;
   background: var(--bg-card); border: 1px solid var(--border-color);
-  box-shadow: 0 12px 40px rgba(26, 26, 26, 0.10);
-  overflow: hidden;
+  box-shadow:
+    0 0 0 6px rgba(74, 124, 126, 0.08),
+    0 0 0 1px var(--accent),
+    0 24px 60px rgba(26, 26, 26, 0.16),
+    0 8px 24px rgba(26, 26, 26, 0.10);
+  overflow: visible;
 }
 .avatar-glass::before { display: none; }
 .avatar-glass img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
 
 .orbit { position: absolute; top: 50%; left: 50%; transform-origin: center; animation: orbitAnim linear infinite; }
-.orbit-1 { width: 320px; height: 320px; margin: -160px 0 0 -160px; border: 1px dashed rgba(26,26,26,0.10); border-radius: 50%; animation-duration: 22s; }
-.orbit-2 { width: 410px; height: 410px; margin: -205px 0 0 -205px; border: 1px dashed rgba(26,26,26,0.08); border-radius: 50%; animation-duration: 32s; animation-direction: reverse; }
-.orbit-3 { width: 500px; height: 500px; margin: -250px 0 0 -250px; border: 1px dashed rgba(26,26,26,0.06); border-radius: 50%; animation-duration: 44s; }
+.orbit-1 { width: 320px; height: 320px; margin: -160px 0 0 -160px; border: 1px dashed rgba(26,26,26,0.16); border-radius: 50%; animation-duration: 22s; }
+.orbit-2 { width: 410px; height: 410px; margin: -205px 0 0 -205px; border: 1px dashed rgba(26,26,26,0.13); border-radius: 50%; animation-duration: 32s; animation-direction: reverse; }
+.orbit-3 { width: 500px; height: 500px; margin: -250px 0 0 -250px; border: 1px dashed rgba(26,26,26,0.10); border-radius: 50%; animation-duration: 44s; }
+
+/* High-contrast tech pills — solid charcoal on cream, white icons */
 .tech-icon {
   position: absolute; top: 0; left: 50%; transform: translate(-50%, -50%);
-  font-size: 1rem; background: var(--bg-card); padding: 10px; border-radius: 50%;
-  border: 1px solid var(--border-strong); color: var(--accent) !important;
-  width: 42px; height: 42px; display: inline-flex; align-items: center; justify-content: center;
-  box-shadow: 0 4px 14px rgba(26,26,26,0.08);
+  font-size: 1.15rem; background: var(--text-primary); padding: 0; border-radius: 50%;
+  border: 2px solid var(--bg-primary);
+  color: #fff !important;
+  width: 48px; height: 48px;
+  display: inline-flex; align-items: center; justify-content: center;
+  box-shadow: var(--shadow-pill);
 }
+/* per-icon accent ring so each pill has identity but stays on-palette */
+.orbit-1 .tech-icon { box-shadow: var(--shadow-pill), 0 0 0 4px rgba(74, 124, 126, 0.14); }
+.orbit-2 .tech-icon { box-shadow: var(--shadow-pill), 0 0 0 4px rgba(74, 124, 126, 0.10); }
+.orbit-3 .tech-icon { box-shadow: var(--shadow-pill), 0 0 0 4px rgba(74, 124, 126, 0.06); }
 @keyframes orbitAnim { 100% { transform: rotate(360deg); } }
 
 /* Scroll cue */
