@@ -13,15 +13,25 @@
 </head>
 
 <body>
+  <!-- Scroll Progress Bar -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- Page Load Curtain -->
+  <div class="loader" id="loader">
+    <div class="loader-mark">AV</div>
+  </div>
+
   <!-- Custom Cursor -->
   <div class="cursor-dot" id="cursor-dot"></div>
   <div class="cursor-outline" id="cursor-outline"></div>
 
-  <!-- Animated Background Orbs -->
+  <!-- Ambient Background -->
+  <div class="mesh-bg"></div>
   <div class="bg-orb orb-1"></div>
   <div class="bg-orb orb-2"></div>
   <div class="bg-orb orb-3"></div>
   <div class="grid-overlay"></div>
+  <div class="grain"></div>
 
   <!-- Navigation -->
   <nav class="nav" id="nav">
@@ -45,9 +55,10 @@
           <span class="pulse-dot"></span>
           <span>Available for Internships & Collaborations</span>
         </div>
+        <p class="hero-eyebrow fade-up" style="animation-delay: 0.05s">Data Analytics &middot; Machine Learning &middot; Web</p>
         <h1 class="hero-title fade-up" style="animation-delay: 0.1s">
           Turning Data into <br>
-          <span class="text-gradient">Intelligent Solutions</span>
+          <span class="text-gradient text-shimmer">Intelligent Solutions</span>
         </h1>
         <p class="hero-desc fade-up" style="animation-delay: 0.2s">
           Hey, I'm <strong>Aditya Valaki</strong> — a final-year IT student from Gujarat, India who loves
@@ -56,24 +67,24 @@
         </p>
         <div class="hero-stats fade-up" style="animation-delay: 0.3s">
           <div class="stat-item">
-            <span class="stat-num text-gradient">8+</span>
+            <span class="stat-num text-gradient" data-count="8" data-suffix="+">0</span>
             <span class="stat-label">Projects Shipped</span>
           </div>
           <div class="stat-item">
-            <span class="stat-num text-gradient">4+</span>
+            <span class="stat-num text-gradient" data-count="4" data-suffix="+">0</span>
             <span class="stat-label">Tech Domains</span>
           </div>
           <div class="stat-item">
-            <span class="stat-num text-gradient">3+</span>
+            <span class="stat-num text-gradient" data-count="3" data-suffix="+">0</span>
             <span class="stat-label">Internships</span>
           </div>
         </div>
         <div class="hero-actions fade-up" style="animation-delay: 0.4s">
-          <a href="#projects" class="btn-primary"><i class="fas fa-rocket"></i> View My Work</a>
-          <a href="https://github.com/Adityavalaki" target="_blank" class="btn-outline"><i
+          <a href="#projects" class="btn-primary magnetic"><i class="fas fa-rocket"></i> View My Work</a>
+          <a href="https://github.com/Adityavalaki" target="_blank" class="btn-outline magnetic"><i
               class="fab fa-github"></i> GitHub</a>
-          <a href="https://www.linkedin.com/in/aditya-j-valaki/" target="_blank" class="btn-icon"><i
-              class="fab fa-linkedin-in"></i></a>
+          <a href="https://www.linkedin.com/in/aditya-j-valaki/" target="_blank" class="btn-icon magnetic"
+            aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
         </div>
       </div>
       <div class="hero-visual fade-up" style="animation-delay: 0.2s">
@@ -88,6 +99,10 @@
         </div>
       </div>
     </div>
+    <a href="#about" class="scroll-cue" aria-label="Scroll down">
+      <span class="scroll-cue-mouse"><span class="scroll-cue-wheel"></span></span>
+      <span class="scroll-cue-text">Scroll</span>
+    </a>
   </section>
 
   <!-- About Section -->
