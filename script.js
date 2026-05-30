@@ -146,6 +146,29 @@ document.addEventListener('DOMContentLoaded', () => {
   counters.forEach(el => countObserver.observe(el));
 
   /* ----------------------------------------------------------
+     Project cards — accordion: click to expand, one at a time
+  ---------------------------------------------------------- */
+  document.querySelectorAll('.project-card-header').forEach(header => {
+    header.addEventListener('click', () => {
+      const card = header.closest('.project-card');
+      const wasExpanded = card.classList.contains('expanded');
+
+      // Collapse any open card
+      document.querySelectorAll('.project-card.expanded').forEach(c => {
+        c.classList.remove('expanded');
+        const h = c.querySelector('.project-card-header');
+        if (h) h.setAttribute('aria-expanded', 'false');
+      });
+
+      // Open this one (if it wasn't already open — second click closes)
+      if (!wasExpanded) {
+        card.classList.add('expanded');
+        header.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
+  /* ----------------------------------------------------------
      Contact form -> Email (Web3Forms) + WhatsApp
   ---------------------------------------------------------- */
 
