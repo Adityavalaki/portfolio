@@ -420,7 +420,7 @@ h1, h2, h3, h4 { font-family: var(--font-heading); font-weight: 700; color: var(
      The visible orbital line is at the *center* of the 2px border, i.e. 1px
      above the inner edge. margin-top:-1px shifts the pill so its vertical
      center aligns precisely with that line. */
-  top: 0; left: 50%; margin-top: -1px;
+  top: 5; left: 50%; margin-top: -1 px;
   transform: translate(-50%, -50%);
   font-size: 1.35rem; line-height: 1;
   background: #FFFFFF;
@@ -434,7 +434,7 @@ h1, h2, h3, h4 { font-family: var(--font-heading); font-weight: 700; color: var(
     0 2px 6px rgba(26, 26, 26, 0.08),
     0 10px 24px rgba(26, 26, 26, 0.18);
 }
-.tech-icon::before { display: block; line-height: 1; }
+.tech-icon::before { display: block; line-height: 2.3; }
 .tech-icon > svg { display: block; margin: auto; }
 @keyframes orbitAnim { 100% { transform: rotate(360deg); } }
 
