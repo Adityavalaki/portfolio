@@ -360,7 +360,7 @@ h1, h2, h3, h4 { font-family: var(--font-heading); font-weight: 700; color: var(
     0 2px 6px rgba(26, 26, 26, 0.08),
     0 10px 24px rgba(26, 26, 26, 0.18);
 }
-.tech-icon::before { display: block; line-height: 2; }
+.tech-icon::before { display: block; line-height: 2.3; }
 .tech-icon > svg { display: block; margin: auto; }
 @keyframes orbitAnim { 100% { transform: rotate(360deg); } }
 
