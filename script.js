@@ -146,6 +146,39 @@ document.addEventListener('DOMContentLoaded', () => {
   counters.forEach(el => countObserver.observe(el));
 
   /* ----------------------------------------------------------
+     Mobile menu — hamburger toggle, escape to close, click-link closes
+  ---------------------------------------------------------- */
+  const navToggle = document.getElementById('navToggle');
+  const mobileMenu = document.getElementById('mobileMenu');
+  if (navToggle && mobileMenu) {
+    // assign --i index to each link for the staggered slide-in
+    mobileMenu.querySelectorAll('.mobile-menu-list a').forEach((a, i) => {
+      a.style.setProperty('--i', i);
+    });
+    const setMenu = (open) => {
+      navToggle.classList.toggle('open', open);
+      mobileMenu.classList.toggle('open', open);
+      navToggle.setAttribute('aria-expanded', String(open));
+      navToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      mobileMenu.setAttribute('aria-hidden', String(!open));
+      document.body.classList.toggle('menu-open', open);
+    };
+    navToggle.addEventListener('click', () => {
+      setMenu(!navToggle.classList.contains('open'));
+    });
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => setMenu(false));
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && navToggle.classList.contains('open')) setMenu(false);
+    });
+    // Close if window resizes to desktop while open
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 992 && navToggle.classList.contains('open')) setMenu(false);
+    });
+  }
+
+  /* ----------------------------------------------------------
      Skill groups — accordion: click to expand, one at a time
   ---------------------------------------------------------- */
   document.querySelectorAll('.skill-group-header').forEach(header => {
