@@ -44,8 +44,29 @@
         </a></li>
       </ul>
       <a href="#contact" class="btn-primary btn-nav"><i class="fas fa-paper-plane"></i> Let's Talk</a>
+
+      <!-- Mobile hamburger (only shown <= 992px) -->
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+        <span class="nav-toggle-line"></span>
+        <span class="nav-toggle-line"></span>
+        <span class="nav-toggle-line"></span>
+      </button>
     </div>
   </nav>
+
+  <!-- Mobile menu drawer -->
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <nav class="mobile-menu-inner" aria-label="Mobile navigation">
+      <ul class="mobile-menu-list">
+        <li><a href="#about"><i class="fas fa-circle-user" aria-hidden="true"></i><span>About</span></a></li>
+        <li><a href="#skills"><i class="fas fa-code" aria-hidden="true"></i><span>Skills</span></a></li>
+        <li><a href="#experience"><i class="fas fa-briefcase" aria-hidden="true"></i><span>Experience</span></a></li>
+        <li><a href="#projects"><i class="fas fa-folder-open" aria-hidden="true"></i><span>Projects</span></a></li>
+        <li><a href="#contact" class="mobile-menu-cta"><i class="fas fa-paper-plane" aria-hidden="true"></i><span>Let's Talk</span></a></li>
+      </ul>
+      <p class="mobile-menu-footer">Aditya Valaki &middot; 2026</p>
+    </nav>
+  </div>
 
   <!-- Hero Section -->
   <section class="hero" id="home">
