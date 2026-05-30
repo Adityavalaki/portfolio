@@ -146,6 +146,29 @@ document.addEventListener('DOMContentLoaded', () => {
   counters.forEach(el => countObserver.observe(el));
 
   /* ----------------------------------------------------------
+     Skill groups — accordion: click to expand, one at a time
+  ---------------------------------------------------------- */
+  document.querySelectorAll('.skill-group-header').forEach(header => {
+    header.addEventListener('click', () => {
+      const group = header.closest('.skill-group');
+      const wasExpanded = group.classList.contains('expanded');
+
+      // Collapse any open group
+      document.querySelectorAll('.skill-group.expanded').forEach(g => {
+        g.classList.remove('expanded');
+        const h = g.querySelector('.skill-group-header');
+        if (h) h.setAttribute('aria-expanded', 'false');
+      });
+
+      // Open this one (if it wasn't already open — second click closes)
+      if (!wasExpanded) {
+        group.classList.add('expanded');
+        header.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
+  /* ----------------------------------------------------------
      Contact form -> Email (Web3Forms) + WhatsApp
   ---------------------------------------------------------- */
 
