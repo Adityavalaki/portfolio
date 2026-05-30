@@ -215,9 +215,11 @@ h1, h2, h3, h4 { font-family: var(--font-heading); font-weight: 700; color: var(
   border-bottom: 1px solid var(--border-color);
   box-shadow: 0 4px 24px rgba(26, 26, 26, 0.08), 0 1px 0 rgba(26, 26, 26, 0.04);
 }
-.nav.scrolled .logo,
-.nav.scrolled .nav-link { color: var(--text-primary); }
-.nav.scrolled .nav-link { font-weight: 600; }
+.nav.scrolled .logo { color: var(--text-primary); }
+.nav.scrolled .nav-links {
+  background: rgba(26, 26, 26, 0.06);
+  border-color: var(--border-strong);
+}
 
 .nav-inner { display: flex; align-items: center; justify-content: space-between; }
 .logo {
@@ -226,18 +228,90 @@ h1, h2, h3, h4 { font-family: var(--font-heading); font-weight: 700; color: var(
   transition: color 0.25s;
 }
 .logo .text-gradient { color: var(--accent); }
-.nav-links { display: flex; gap: 36px; list-style: none; }
+/* Discrete-tabs nav: icon-only pills that bloom on active */
+.nav-links {
+  display: flex; gap: 6px; list-style: none; align-items: center;
+  padding: 5px;
+  background: rgba(26, 26, 26, 0.04);
+  border: 1px solid var(--border-color);
+  border-radius: 50px;
+}
 .nav-link {
-  color: var(--text-secondary); text-decoration: none; font-weight: 500;
-  font-size: 0.92rem; transition: color 0.25s, font-weight 0.25s; position: relative;
+  display: inline-flex; align-items: center; justify-content: center;
+  height: 38px; min-width: 38px;
+  padding: 0 11px;
+  border-radius: 50px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary); text-decoration: none;
+  font-weight: 500; font-size: 0.88rem;
+  white-space: nowrap; overflow: hidden;
+  position: relative;
+  transition:
+    color 0.3s var(--ease-back),
+    border-color 0.3s var(--ease-back),
+    background 0.3s,
+    box-shadow 0.3s,
+    transform 0.3s var(--ease-back);
 }
-.nav-link::after {
-  content: ''; position: absolute; bottom: -6px; left: 0; width: 0; height: 2px;
-  background: var(--accent); transition: width 0.3s var(--ease-spring);
-  border-radius: 2px;
+.nav-link i {
+  font-size: 0.88rem; flex-shrink: 0;
+  width: 16px; text-align: center;
+  transition: color 0.3s var(--ease-back), transform 0.4s var(--ease-back);
 }
-.nav-link:hover, .nav-link.active { color: var(--text-primary); }
-.nav-link:hover::after, .nav-link.active::after { width: 100%; }
+
+/* Label collapsed by default — springs open when .active */
+.nav-link .label {
+  display: inline-block;
+  max-width: 0; margin-left: 0;
+  opacity: 0;
+  overflow: hidden; white-space: nowrap;
+  position: relative;
+  transition:
+    max-width 0.55s var(--ease-back),
+    margin-left 0.55s var(--ease-back),
+    opacity 0.3s ease-out 0.05s;
+}
+
+/* Hover — quiet lift, accent icon */
+.nav-link:hover {
+  color: var(--text-primary);
+  border-color: var(--border-strong);
+  box-shadow: 0 2px 8px rgba(26, 26, 26, 0.06);
+  transform: translateY(-1px);
+}
+.nav-link:hover i { color: var(--accent); }
+
+/* Focus-visible — keyboard accessible ring */
+.nav-link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* Active — pill expands, accent everywhere, shine sweeps once */
+.nav-link.active {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--bg-card);
+  box-shadow: 0 4px 14px rgba(74, 124, 126, 0.22);
+}
+.nav-link.active i { color: var(--accent); transform: scale(1.05); }
+.nav-link.active .label {
+  max-width: 140px; margin-left: 8px; opacity: 1;
+  font-weight: 600;
+}
+/* Shine sweep across the label — fires every time .active is set */
+.nav-link.active .label::after {
+  content: ""; position: absolute; top: 0; bottom: 0; width: 30px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.85), transparent);
+  animation: navShine 0.6s 0.35s ease-out 1;
+  pointer-events: none;
+}
+@keyframes navShine {
+  from { left: -40px; }
+  to   { left: 140%; }
+}
+
 .btn-nav { padding: 9px 20px; font-size: 0.88rem; }
 
 /* ============================================================
