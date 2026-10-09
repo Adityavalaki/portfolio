@@ -1,15 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aditya Valaki | Data & ML Engineer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Aditya Valaki | Data &amp; ML Engineer</title>
+  <meta name="description" content="Aditya Valaki — final-year IT student building data analytics, data science and machine learning projects.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap">
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono&display=swap"
-    rel="stylesheet">
+  <script>
+    /* Runs before first paint so CSS can tell "script available" from "no script". */
+    document.documentElement.classList.replace('no-js', 'js');
+  </script>
   <!-- Vercel Web Analytics -->
   <script>
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
@@ -18,600 +22,293 @@
 </head>
 
 <body>
-  <!-- Scroll progress -->
-  <div class="scroll-progress" id="scrollProgress"></div>
+  <a class="skip" href="#main">Skip to content</a>
 
-  <!-- Page load curtain -->
-  <div class="loader" id="loader">
-    <div class="loader-mark">AV</div>
+  <header class="mast" id="top">
+    <div class="wrap mast__in">
+      <span class="cap mast__season">Season 2026</span>
+      <a class="mast__name" href="#top">Aditya Valaki</a>
+      <nav class="mast__nav cap" aria-label="Sections">
+        <a href="#profile">Profile</a><a href="#season">Season</a><a href="#garage">Garage</a><a href="#spec">Spec</a><a href="#contact">Contact</a>
+      </nav>
+      <button class="mast__menu" type="button" data-contents aria-expanded="false" aria-controls="contents">Contents</button>
+    </div>
+  </header>
+
+  <div class="runner" id="runner" aria-hidden="true">
+    <div class="wrap runner__in">
+      <a class="runner__name" href="#top" tabindex="-1">Aditya Valaki</a>
+      <span class="runner__sec" id="runnerSec">Cover</span>
+      <button class="runner__btn" type="button" id="contentsBtn" data-contents aria-expanded="false" aria-controls="contents" tabindex="-1">Contents</button>
+    </div>
+    <span class="runner__bar"><i id="runnerBar"></i></span>
   </div>
 
-  <!-- Custom cursor -->
-  <div class="cursor-dot" id="cursor-dot"></div>
-  <div class="cursor-outline" id="cursor-outline"></div>
-
-  <!-- Navigation -->
-  <nav class="nav" id="nav">
-    <div class="nav-inner container">
-      <a href="#" class="logo">Aditya Valaki<span class="text-gradient">.</span></a>
-      <ul class="nav-links" role="tablist">
-        <li><a href="#about" class="nav-link" aria-label="About">
-          <i class="fas fa-circle-user" aria-hidden="true"></i><span class="label">About</span>
-        </a></li>
-        <li><a href="#skills" class="nav-link" aria-label="Skills">
-          <i class="fas fa-code" aria-hidden="true"></i><span class="label">Skills</span>
-        </a></li>
-        <li><a href="#experience" class="nav-link" aria-label="Experience">
-          <i class="fas fa-briefcase" aria-hidden="true"></i><span class="label">Experience</span>
-        </a></li>
-        <li><a href="#projects" class="nav-link" aria-label="Projects">
-          <i class="fas fa-folder-open" aria-hidden="true"></i><span class="label">Projects</span>
-        </a></li>
-      </ul>
-      <a href="#contact" class="btn-primary btn-nav"><i class="fas fa-paper-plane"></i> Let's Talk</a>
-
-      <!-- Mobile hamburger (only shown <= 992px) -->
-      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
-        <span class="nav-toggle-line"></span>
-        <span class="nav-toggle-line"></span>
-        <span class="nav-toggle-line"></span>
-      </button>
+  <div class="contents" id="contents" hidden>
+    <div class="contents__panel" role="dialog" aria-modal="true" aria-labelledby="contentsTitle">
+      <div class="contents__head"><p class="cap" id="contentsTitle">Contents</p><button class="contents__close" type="button" id="contentsClose">Close</button></div>
+      <ol><li><a href="#profile"><span>Driver profile</span><span class="num">01</span></a></li><li><a href="#season"><span>The season</span><span class="num">02</span></a></li><li><a href="#garage"><span>The garage</span><span class="num">03</span></a></li><li><a href="#spec"><span>Technical specification</span><span class="num">04</span></a></li><li><a href="#contact"><span>Get in touch</span><span class="num">05</span></a></li></ol>
     </div>
-  </nav>
-
-  <!-- Mobile menu drawer -->
-  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
-    <nav class="mobile-menu-inner" aria-label="Mobile navigation">
-      <ul class="mobile-menu-list">
-        <li><a href="#about"><i class="fas fa-circle-user" aria-hidden="true"></i><span>About</span></a></li>
-        <li><a href="#skills"><i class="fas fa-code" aria-hidden="true"></i><span>Skills</span></a></li>
-        <li><a href="#experience"><i class="fas fa-briefcase" aria-hidden="true"></i><span>Experience</span></a></li>
-        <li><a href="#projects"><i class="fas fa-folder-open" aria-hidden="true"></i><span>Projects</span></a></li>
-        <li><a href="#contact" class="mobile-menu-cta"><i class="fas fa-paper-plane" aria-hidden="true"></i><span>Let's Talk</span></a></li>
-      </ul>
-      <p class="mobile-menu-footer">Aditya Valaki &middot; 2026</p>
-    </nav>
   </div>
+<main id="main">
 
-  <!-- Hero Section -->
-  <section class="hero" id="home">
-    <div class="container hero-inner">
-      <div class="hero-content">
-        <div class="hero-badge fade-up">
-          <span class="pulse-dot"></span>
-          <span>Available for Internships & Collaborations</span>
+  <section class="cover" aria-labelledby="coverTitle">
+    <div class="wrap">
+      <div class="cover__meta cap"><span>Gujarat, India</span><span class="status"><i aria-hidden="true"></i>Open to internships &amp; entry-level roles</span><span class="cover__meta-r">Portfolio</span></div>
+      <h1 class="cover__title" id="coverTitle"><span class="cover__l1" data-drift="-1">Aditya</span><span class="cover__l2" data-drift="1">Valaki</span></h1>
+      <div class="cover__grid">
+        <div class="cover__deck">
+          <p class="cover__standfirst">Finding the <em>signal</em> in messy data. I analyse it, model it and build machine learning that turns it into decisions people can act on.</p>
+          <div class="cover__cta">
+            <a class="btn" href="#garage">See the work</a>
+            <a class="link" href="https://github.com/Adityavalaki" target="_blank" rel="noopener noreferrer">GitHub <svg class="ico" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+            <a class="link" href="https://www.linkedin.com/in/aditya-j-valaki/" target="_blank" rel="noopener noreferrer">LinkedIn <svg class="ico" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          </div>
+          <nav aria-label="Contents">
+            <p class="cap toc__label">In this issue</p>
+            <ol class="toc"><li><a href="#profile"><span>Driver profile</span><span class="num">01</span></a></li><li><a href="#season"><span>The season</span><span class="num">02</span></a></li><li><a href="#garage"><span>The garage</span><span class="num">03</span></a></li><li><a href="#spec"><span>Technical specification</span><span class="num">04</span></a></li><li><a href="#contact"><span>Get in touch</span><span class="num">05</span></a></li></ol>
+          </nav>
         </div>
-        <p class="hero-eyebrow fade-up" style="animation-delay: 0.05s">Data Analytics &middot; Machine Learning &middot; Web</p>
-        <h1 class="hero-title fade-up" style="animation-delay: 0.1s">
-          Turning Data into <br>
-          <span class="text-gradient">Intelligent Solutions</span>
-        </h1>
-        <p class="hero-desc fade-up" style="animation-delay: 0.2s">
-          Hey, I'm <strong>Aditya Valaki</strong> — a final-year IT student from Gujarat, India who loves
-          living at the intersection of <strong>data, machine learning, and product</strong>. I build things that
-          turn messy real-world problems into clean, useful software.
-        </p>
-        <div class="hero-stats fade-up" style="animation-delay: 0.3s">
-          <div class="stat-item">
-            <span class="stat-num text-gradient" data-count="7" data-suffix="+">0</span>
-            <span class="stat-label">Projects Shipped</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-num text-gradient" data-count="4" data-suffix="+">0</span>
-            <span class="stat-label">Tech Domains</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-num text-gradient" data-count="3" data-suffix="+">0</span>
-            <span class="stat-label">Internships</span>
-          </div>
-        </div>
-        <div class="hero-actions fade-up" style="animation-delay: 0.4s">
-          <a href="#projects" class="btn-primary magnetic"><i class="fas fa-rocket"></i> View My Work</a>
-          <a href="https://github.com/Adityavalaki" target="_blank" rel="noopener" class="btn-outline magnetic"><i
-              class="fab fa-github"></i> GitHub</a>
-          <a href="https://www.linkedin.com/in/aditya-j-valaki/" target="_blank" rel="noopener" class="btn-icon magnetic"
-            aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-        </div>
-      </div>
-      <div class="hero-visual fade-up" style="animation-delay: 0.2s">
-        <div class="tech-stack-sphere">
-          <div class="orbit orbit-1"><i class="fab fa-python tech-icon" style="color: #3b82f6;"></i></div>
-          <div class="orbit orbit-2"><i class="fas fa-database tech-icon" style="color: #10b981;"></i></div>
-          <div class="orbit orbit-3"><i class="fas fa-brain tech-icon" style="color: #8b5cf6;"></i></div>
-          <div class="avatar-glass">
-            <img src="assets/Avatar.jpg" alt="Aditya Valaki"
-              onerror="this.src='https://ui-avatars.com/api/?name=Aditya+Valaki&background=111827&color=6366f1&size=200'">
-          </div>
-        </div>
-      </div>
-    </div>
-    <a href="#about" class="scroll-cue" aria-label="Scroll down">
-      <span class="scroll-cue-mouse"><span class="scroll-cue-wheel"></span></span>
-      <span class="scroll-cue-text">Scroll</span>
-    </a>
-  </section>
-
-  <!-- About Section -->
-  <section class="section" id="about">
-    <div class="container">
-      <div class="section-header fade-up">
-        <span class="eyebrow">01 — Profile</span>
-        <h2 class="title">About <span class="text-gradient">Me.</span></h2>
-        <p class="lede">A quick intro before we get into the work — who I am, how I got here, and what I'm
-          building toward.</p>
-      </div>
-      <div class="about-grid">
-        <div class="about-text glass-card fade-up">
-          <i class="fas fa-quote-left quote-icon"></i>
-          <p>So, who am I? I'm <strong>Aditya Valaki</strong> — a final-year
-            <strong>B.Tech in Information Technology</strong> student at G H Patel College of Engineering &
-            Technology (GCET), Anand. Born and raised in Bhavnagar, Gujarat. I've been the kind of person who
-            takes a working laptop apart just to see how it ticks — and I never really stopped.</p>
-
-          <p>My journey into tech didn't start with a grand plan. It started with curiosity — wondering how
-            Netflix knew what I'd watch next, how spam filters quietly sorted my inbox, and how a few lines of
-            Python could tell a story hidden inside a messy CSV. That curiosity slowly turned into a serious
-            love for <strong>Data Science, Machine Learning, and Analytics</strong>, and along the way I
-            picked up <strong>Full-Stack Web Development, Computer Vision, and Cybersecurity</strong> too.</p>
-
-          <p>I'm not the person who learns a framework just to add it to a resume. I learn things because I
-            want to <em>build</em> something — a malware classifier that turns binaries into images, an
-            expense tracker that actually understands how I spend. Most of my projects start as a small "wait, what if?" and end up on my
-            <strong>GitHub</strong>.</p>
-
-          <p>Outside of code, I lead as the <strong>Marketing & Sales Head at Zeeniith Technology</strong>,
-            where I get to mix engineering instincts with real business decisions. I've also served as
-            <strong>Joint Treasurer & Branch Coordinator at IEEE GCET SB</strong> and as an
-            <strong>IEEE R10 ACEI Entrepreneurship Ambassador</strong> — roles that taught me that being a good engineer isn't just about solving problems. It's also about communicating ideas clearly, understanding people, and turning thoughts into something others can believe in and build together.</p>
-
-          <p>When I'm not in front of a screen, you'll find me sketching out product ideas in a notebook,
-            riding on my bike across city and visiting different places. I'm currently
-            looking for <strong>internships and entry-level roles</strong> in Data Analytics / ML where I can
-            keep learning, keep shipping, and hopefully build something that actually matters.</p>
-        </div>
-        <div class="about-highlights fade-up" style="animation-delay: 0.2s">
-          <div class="highlight-card">
-            <i class="fas fa-chart-line text-gradient"></i>
-            <h3>Data Analytics</h3>
-            <p>Turning messy datasets into stories decision-makers can act on.</p>
-          </div>
-          <div class="highlight-card">
-            <i class="fas fa-robot text-gradient"></i>
-            <h3>Machine Learning</h3>
-            <p>Predictive models, NLP and computer-vision pipelines that ship.</p>
-          </div>
-          <div class="highlight-card">
-            <i class="fas fa-code text-gradient"></i>
-            <h3>Web Development</h3>
-            <p>Full-stack apps with React, Node and Supabase under the hood.</p>
-          </div>
-          <div class="highlight-card">
-            <i class="fas fa-shield-alt text-gradient"></i>
-            <h3>Cybersecurity</h3>
-            <p>Malware analysis, secure design and a healthy paranoia about inputs.</p>
-          </div>
-          <div class="highlight-card">
-            <i class="fas fa-bullhorn text-gradient"></i>
-            <h3>Product & Growth</h3>
-            <p>Marketing, sales and product instincts shaped at Zeeniith.</p>
-          </div>
-          <div class="highlight-card">
-            <i class="fas fa-users text-gradient"></i>
-            <h3>Leadership</h3>
-            <p>IEEE leadership, community building and team coordination.</p>
-          </div>
-        </div>
+        <figure class="cover__photo" data-parallax>
+          <span class="cover__block" aria-hidden="true"></span>
+          <img src="assets/cover.webp" alt="Portrait of Aditya Valaki" width="960" height="1056" fetchpriority="high">
+          <figcaption class="cap">Aditya Valaki · B.Tech IT, GCET Anand</figcaption>
+        </figure>
       </div>
     </div>
   </section>
 
-  <!-- Skills Section -->
-  <section class="section" id="skills">
-    <div class="container">
-      <div class="section-header fade-up">
-        <span class="eyebrow">02 — Toolkit</span>
-        <h2 class="title">Technical <span class="text-gradient">Arsenal.</span></h2>
-        <p class="lede">The languages, frameworks and platforms I reach for when shipping data, ML and web
-          projects end to end.</p>
+  <section class="figures" aria-label="By the numbers">
+    <div class="wrap">
+      <ul class="figures__row"><li><span class="figures__v">05</span><span class="cap">Projects shipped</span></li><li><span class="figures__v">56</span><span class="cap">Skills on the spec sheet</span></li><li><span class="figures__v">02</span><span class="cap">Internships</span></li><li><span class="figures__v">2023</span><span class="cap">Started B.Tech</span></li></ul>
+    </div>
+  </section>
+
+  <section class="sec" id="profile" data-name="Driver profile" data-n="1" aria-labelledby="profile-title">
+    <div class="wrap">
+      
+      <header class="sec__head rv">
+        <h2 class="sec__title" id="profile-title"><span class="sec__no">01</span><span class="sec__name">Driver profile</span></h2>
+        
+      </header>
+      <div class="profile">
+        <dl class="spec rv"><div><dt>Name</dt><dd>Aditya Valaki</dd></div><div><dt>From</dt><dd>Bhavnagar, Gujarat</dd></div><div><dt>Studying</dt><dd>B.Tech, Information Technology, GCET Anand</dd></div><div><dt>Focus</dt><dd>Data analytics, data science, AI and machine learning</dd></div><div><dt>Open to</dt><dd>Internships and entry-level roles in data analysis, data science, and AI and ML</dd></div></dl>
+        <div class="story rv"><p class="story__lead">Final-year B.Tech Information Technology student at G H Patel College of Engineering and Technology, Anand, building a career in data analytics, data science and machine learning.</p><p>My work sits where data meets decisions: cleaning and exploring messy datasets, building dashboards, trend models and reports, and training machine learning models for vision and language problems. Recent projects range from an F1 strategy workbench on public timing data to CNN-based malware classification and NLP fake-news detection.</p><p>Off the clock, I trade datasets for open roads: long rides on my bike, trips to places I have not explored yet, and a camera to frame whatever I find along the way.</p></div>
       </div>
-      <p class="skills-hint fade-up">Click any category to see the tools inside.</p>
-      <div class="skills-grid">
+      <h3 class="cap sub">Roles off track</h3>
+      <ul class="roles"><li class="rv"><span class="cap">Zeeniith Technology</span><b>Marketing &amp; Sales Head</b></li><li class="rv"><span class="cap">IEEE GCET Student Branch</span><b>Joint Treasurer &amp; Branch Coordinator</b></li><li class="rv"><span class="cap">IEEE Region 10</span><b>ACEI Entrepreneurship Ambassador</b></li></ul>
+    </div>
+  </section>
 
-        <article class="skill-group fade-up">
-          <button type="button" class="skill-group-header" aria-expanded="false" aria-controls="skill-langs">
-            <span class="skill-icon"><i class="fas fa-code" aria-hidden="true"></i></span>
-            <span class="skill-name">Languages</span>
-            <span class="skill-count">8</span>
-            <span class="skill-chevron" aria-hidden="true"><i class="fas fa-plus"></i></span>
-          </button>
-          <div class="skill-group-detail" id="skill-langs" role="region">
-            <div class="tags">
-              <span class="tag">Python</span>
-              <span class="tag">JavaScript</span>
-              <span class="tag">SQL</span>
-              <span class="tag">Java</span>
-              <span class="tag">C / C++</span>
-              <span class="tag">HTML5</span>
-              <span class="tag">CSS3</span>
-              <span class="tag">Bash</span>
-            </div>
+  <section class="sec" id="season" data-name="The season" data-n="2" aria-labelledby="season-title">
+    <div class="wrap">
+      
+      <header class="sec__head rv">
+        <h2 class="sec__title" id="season-title"><span class="sec__no">02</span><span class="sec__name">The season</span></h2>
+        <p class="sec__deck">Every role so far, newest first, set out like a results sheet.</p>
+      </header>
+      <table class="results">
+        <thead><tr><th scope="col">Rd</th><th scope="col">Dates</th><th scope="col">Role</th><th scope="col">Team</th><th scope="col">Notes</th></tr></thead>
+        <tbody><tr class="rv">
+            <td class="results__rd">R6</td>
+            <td class="results__date">May – Jul 2026</td>
+            <th scope="row" class="results__role">Summer Research Intern</th>
+            <td class="results__team">Dhirubhai Ambani University (formerly DA-IICT)</td>
+            <td class="results__note">AI and healthcare-technology group, working on medication adherence.</td>
+          </tr><tr class="rv">
+            <td class="results__rd">R5</td>
+            <td class="results__date">Dec 2025 – Aug 2026</td>
+            <th scope="row" class="results__role">Marketing &amp; Sales Head</th>
+            <td class="results__team">Zeeniith Technology</td>
+            <td class="results__note">Mainly worked on client engagement, communication with clients, and marketing ideas.</td>
+          </tr><tr class="rv">
+            <td class="results__rd">R4</td>
+            <td class="results__date">May – Jul 2025</td>
+            <th scope="row" class="results__role">Entrepreneurship Ambassador</th>
+            <td class="results__team">IEEE Region 10 · ACEI</td>
+            <td class="results__note">Rallied students across colleges for IEEE Gujarat Section entrepreneurship events.</td>
+          </tr><tr class="rv">
+            <td class="results__rd">R3</td>
+            <td class="results__date">May – Jun 2025</td>
+            <th scope="row" class="results__role">Business Analyst Intern</th>
+            <td class="results__team">Cognifyz Technologies</td>
+            <td class="results__note">Built dashboards, trend models, and reporting systems.</td>
+          </tr><tr class="rv">
+            <td class="results__rd">R2</td>
+            <td class="results__date">Jan – Jul 2025</td>
+            <th scope="row" class="results__role">Joint Treasurer &amp; Branch Coordinator</th>
+            <td class="results__team">IEEE GCET Student Branch</td>
+            <td class="results__note">Coordinated the Chemical and Civil branches and managed event budgets as Joint Treasurer.</td>
+          </tr><tr class="rv">
+            <td class="results__rd">R1</td>
+            <td class="results__date">2023 – Present</td>
+            <th scope="row" class="results__role">B.Tech, Information Technology <span class="live">Now</span></th>
+            <td class="results__team">G H Patel College of Engineering &amp; Technology, Anand</td>
+            <td class="results__note"><span class="sr-only">No notes</span></td>
+          </tr></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="sec" id="garage" data-name="The garage" data-n="3" aria-labelledby="garage-title">
+    <div class="wrap">
+      
+      <header class="sec__head rv">
+        <h2 class="sec__title" id="garage-title"><span class="sec__no">03</span><span class="sec__name">The garage</span></h2>
+        <p class="sec__deck">Five projects. The feature is the one closest to the paddock.</p>
+      </header>
+      <article class="feature" data-project="racecraft">
+        <span class="feature__no" aria-hidden="true" data-float>01</span>
+        <div class="feature__body rv">
+          <p class="cap feature__kicker">Feature · Motorsport data</p>
+          <h3 class="feature__title">Racecraft</h3>
+          <p class="feature__standfirst">F1 race replay and strategy workbench on public FastF1 timing data: lap-by-lap replays, tyre-degradation curves by compound and a pit-window prediction model, served by a FastAPI back end to a React front end.</p>
+          <ul class="tags"><li>Python</li><li>FastF1</li><li>Pandas</li><li>FastAPI</li><li>React</li></ul>
+          <div class="feature__links"><a class="btn" href="https://github.com/Adityavalaki/racecraft" target="_blank" rel="noopener noreferrer">View code <svg class="ico" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></div>
+        </div>
+      </article>
+      <ol class="list"><li class="item rv" data-project="medication-ai">
+          <span class="item__n">02</span>
+          <div class="item__body">
+            <h3 class="item__title">Medication AI App</h3>
+            <p>Mobile app that runs OCR on handwritten prescriptions and parses them into structured dose schedules, with reminders, adherence tracking and an SOS alert.</p>
+            <ul class="tags"><li>React Native</li><li>OCR</li><li>Supabase</li><li>PostgreSQL</li></ul>
+            
           </div>
-        </article>
-
-        <article class="skill-group fade-up">
-          <button type="button" class="skill-group-header" aria-expanded="false" aria-controls="skill-ds">
-            <span class="skill-icon"><i class="fas fa-brain" aria-hidden="true"></i></span>
-            <span class="skill-name">Data Science &amp; ML</span>
-            <span class="skill-count">12</span>
-            <span class="skill-chevron" aria-hidden="true"><i class="fas fa-plus"></i></span>
-          </button>
-          <div class="skill-group-detail" id="skill-ds" role="region">
-            <div class="tags">
-              <span class="tag">Pandas</span>
-              <span class="tag">NumPy</span>
-              <span class="tag">Scikit-Learn</span>
-              <span class="tag">TensorFlow</span>
-              <span class="tag">Keras</span>
-              <span class="tag">PyTorch</span>
-              <span class="tag">OpenCV</span>
-              <span class="tag">NLTK</span>
-              <span class="tag">Matplotlib</span>
-              <span class="tag">Seaborn</span>
-              <span class="tag">EDA</span>
-              <span class="tag">Feature Engg.</span>
-            </div>
+        </li><li class="item rv" data-project="visual-malware">
+          <span class="item__n">03</span>
+          <div class="item__body">
+            <h3 class="item__title">Visual Malware v3</h3>
+            <p>Turns executable binaries into grayscale byte-plot images and classifies malware families with a hybrid CNN and Random Forest model.</p>
+            <ul class="tags"><li>Python</li><li>CNN</li><li>Random Forest</li><li>Computer Vision</li></ul>
+            
           </div>
-        </article>
-
-        <article class="skill-group fade-up">
-          <button type="button" class="skill-group-header" aria-expanded="false" aria-controls="skill-analytics">
-            <span class="skill-icon"><i class="fas fa-chart-bar" aria-hidden="true"></i></span>
-            <span class="skill-name">Analytics &amp; BI</span>
-            <span class="skill-count">10</span>
-            <span class="skill-chevron" aria-hidden="true"><i class="fas fa-plus"></i></span>
-          </button>
-          <div class="skill-group-detail" id="skill-analytics" role="region">
-            <div class="tags">
-              <span class="tag">Power BI</span>
-              <span class="tag">Tableau</span>
-              <span class="tag">IBM Cognos</span>
-              <span class="tag">Excel</span>
-              <span class="tag">Google Sheets</span>
-              <span class="tag">MySQL</span>
-              <span class="tag">PostgreSQL</span>
-              <span class="tag">MongoDB</span>
-              <span class="tag">Statistics</span>
-              <span class="tag">A/B Testing</span>
-            </div>
+        </li><li class="item rv" data-project="smartspend">
+          <span class="item__n">04</span>
+          <div class="item__body">
+            <h3 class="item__title">SmartSpend</h3>
+            <p>Progressive web app for expense tracking with real-time cloud sync and transaction categorisation.</p>
+            <ul class="tags"><li>JavaScript</li><li>PWA</li><li>Firebase Firestore</li></ul>
+            <div class="item__links"><a class="link" href="https://smartspend.dev" target="_blank" rel="noopener noreferrer">Live app <svg class="ico" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a><a class="link" href="https://github.com/Adityavalaki/smartspend" target="_blank" rel="noopener noreferrer">Code <svg class="ico" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></div>
           </div>
-        </article>
-
-        <article class="skill-group fade-up">
-          <button type="button" class="skill-group-header" aria-expanded="false" aria-controls="skill-web">
-            <span class="skill-icon"><i class="fas fa-laptop-code" aria-hidden="true"></i></span>
-            <span class="skill-name">Web &amp; App Dev</span>
-            <span class="skill-count">9</span>
-            <span class="skill-chevron" aria-hidden="true"><i class="fas fa-plus"></i></span>
-          </button>
-          <div class="skill-group-detail" id="skill-web" role="region">
-            <div class="tags">
-              <span class="tag">React</span>
-              <span class="tag">Node.js</span>
-              <span class="tag">Express</span>
-              <span class="tag">Tailwind CSS</span>
-              <span class="tag">Bootstrap</span>
-              <span class="tag">Flask</span>
-              <span class="tag">REST APIs</span>
-              <span class="tag">Supabase</span>
-              <span class="tag">Firebase</span>
-            </div>
+        </li><li class="item rv" data-project="fakeshield">
+          <span class="item__n">05</span>
+          <div class="item__body">
+            <h3 class="item__title">FakeShield</h3>
+            <p>Fake-news detector built on DistilBERT fine-tuned on the WELFake dataset (93.2% accuracy, 5-fold cross-validated), with live RSS monitoring on a Flask-SocketIO dashboard.</p>
+            <ul class="tags"><li>Python</li><li>DistilBERT</li><li>NLP</li><li>Flask-SocketIO</li></ul>
+            <div class="item__links"><a class="link" href="https://github.com/Adityavalaki/fakeshield" target="_blank" rel="noopener noreferrer">Code <svg class="ico" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></div>
           </div>
-        </article>
+        </li></ol>
+    </div>
+  </section>
 
-        <article class="skill-group fade-up">
-          <button type="button" class="skill-group-header" aria-expanded="false" aria-controls="skill-tools">
-            <span class="skill-icon"><i class="fas fa-tools" aria-hidden="true"></i></span>
-            <span class="skill-name">Tools &amp; Platforms</span>
-            <span class="skill-count">9</span>
-            <span class="skill-chevron" aria-hidden="true"><i class="fas fa-plus"></i></span>
-          </button>
-          <div class="skill-group-detail" id="skill-tools" role="region">
-            <div class="tags">
-              <span class="tag">Git</span>
-              <span class="tag">GitHub</span>
-              <span class="tag">VS Code</span>
-              <span class="tag">Jupyter</span>
-              <span class="tag">Google Colab</span>
-              <span class="tag">Linux</span>
-              <span class="tag">Docker</span>
-              <span class="tag">Postman</span>
-              <span class="tag">Figma</span>
+  <section class="sec" id="spec" data-name="Technical specification" data-n="4" aria-labelledby="spec-title">
+    <div class="wrap">
+      
+      <header class="sec__head rv">
+        <h2 class="sec__title" id="spec-title"><span class="sec__no">04</span><span class="sec__name">Technical specification</span></h2>
+        <p class="sec__deck">56 skills, filed the way an engineer files a car: by the part that does the same job. Point at a part or a row to match them up.</p>
+      </header>
+      <div class="tech">
+        <figure class="tech__fig rv">
+          <svg class="car" viewBox="0 0 400 760" role="img" aria-labelledby="carTitle carDesc">
+          <title id="carTitle">Plan view of a race car</title>
+          <desc id="carDesc">A top-down line drawing of an open-wheel race car. Six numbered parts match the six skill areas listed beside it.</desc>
+          <line class="car__axis" x1="200" y1="14" x2="200" y2="746"/>
+          <path class="car__floor" d="M162 300 L120 352 L108 560 L140 644 L260 644 L292 560 L280 352 L238 300 Z"/>
+          <g class="car__susp"><line x1="142" y1="158" x2="186" y2="176"/><line x1="142" y1="188" x2="188" y2="204"/><line x1="258" y1="158" x2="214" y2="176"/><line x1="258" y1="188" x2="212" y2="204"/><line x1="142" y1="592" x2="184" y2="572"/><line x1="142" y1="628" x2="184" y2="600"/><line x1="258" y1="592" x2="216" y2="572"/><line x1="258" y1="628" x2="216" y2="600"/></g>
+          <g class="part part--tyres" data-part="tools"><rect x="90" y="128" width="52" height="88" rx="10"/><rect x="258" y="128" width="52" height="88" rx="10"/><rect x="80" y="560" width="62" height="104" rx="12"/><rect x="258" y="560" width="62" height="104" rx="12"/></g>
+          <g class="part" data-part="bi"><path d="M178 340 L134 368 L124 500 L150 548 L182 548 Z"/><path d="M222 340 L266 368 L276 500 L250 548 L218 548 Z"/></g>
+          <g class="part" data-part="languages"><path d="M180 372 L220 372 L216 604 L184 604 Z"/><rect x="190" y="382" width="20" height="26" rx="4"/></g>
+          <g class="part" data-part="web"><path d="M200 34 L212 66 L222 300 L178 300 L188 66 Z"/></g>
+          <g class="part" data-part="soft"><path d="M178 300 Q200 288 222 300 L224 372 L176 372 Z"/><circle cx="200" cy="338" r="15"/><path class="part__halo" d="M181 364 Q200 296 219 364"/></g>
+          <g class="part" data-part="ml"><rect x="68" y="66" width="264" height="26" rx="3"/><rect x="60" y="56" width="10" height="44"/><rect x="330" y="56" width="10" height="44"/><rect x="108" y="686" width="184" height="30" rx="3"/><rect x="100" y="676" width="10" height="48"/><rect x="290" y="676" width="10" height="48"/></g>
+          <g class="callout" data-part="languages"><polyline points="200,492 352,492"/><circle cx="200" cy="492" r="3"/><circle class="callout__dot" cx="366" cy="492" r="14"/><text x="366" y="496.5">1</text></g><g class="callout" data-part="ml"><polyline points="334,79 352,140"/><circle cx="334" cy="79" r="3"/><circle class="callout__dot" cx="366" cy="140" r="14"/><text x="366" y="144.5">2</text></g><g class="callout" data-part="bi"><polyline points="140,450 48,450"/><circle cx="140" cy="450" r="3"/><circle class="callout__dot" cx="34" cy="450" r="14"/><text x="34" y="454.5">3</text></g><g class="callout" data-part="web"><polyline points="204,236 48,262"/><circle cx="204" cy="236" r="3"/><circle class="callout__dot" cx="34" cy="262" r="14"/><text x="34" y="266.5">4</text></g><g class="callout" data-part="tools"><polyline points="111,612 48,612"/><circle cx="111" cy="612" r="3"/><circle class="callout__dot" cx="34" cy="612" r="14"/><text x="34" y="616.5">5</text></g><g class="callout" data-part="soft"><polyline points="216,330 352,330"/><circle cx="216" cy="330" r="3"/><circle class="callout__dot" cx="366" cy="330" r="14"/><text x="366" y="334.5">6</text></g>
+        </svg>
+          <figcaption class="cap">Fig. 1 · Plan view, not to scale</figcaption>
+        </figure>
+        <ol class="tech__list"><li class="tech__row rv" data-part="languages" tabindex="0">
+            <span class="tech__n" aria-hidden="true">1</span>
+            <div class="tech__body">
+              <h3 class="tech__part">Power unit<span class="tech__skill">Languages · 08</span></h3>
+              <p class="tech__note">What everything else runs on.</p>
+              <p class="tech__items">Python <span aria-hidden="true">/</span> JavaScript <span aria-hidden="true">/</span> SQL <span aria-hidden="true">/</span> Java <span aria-hidden="true">/</span> C/C++ <span aria-hidden="true">/</span> HTML5 <span aria-hidden="true">/</span> CSS3 <span aria-hidden="true">/</span> Bash</p>
             </div>
-          </div>
-        </article>
-
-        <article class="skill-group fade-up">
-          <button type="button" class="skill-group-header" aria-expanded="false" aria-controls="skill-soft">
-            <span class="skill-icon"><i class="fas fa-lightbulb" aria-hidden="true"></i></span>
-            <span class="skill-name">Soft &amp; Domain</span>
-            <span class="skill-count">8</span>
-            <span class="skill-chevron" aria-hidden="true"><i class="fas fa-plus"></i></span>
-          </button>
-          <div class="skill-group-detail" id="skill-soft" role="region">
-            <div class="tags">
-              <span class="tag">Prompt Engg.</span>
-              <span class="tag">Problem Solving</span>
-              <span class="tag">Public Speaking</span>
-              <span class="tag">Leadership</span>
-              <span class="tag">Marketing</span>
-              <span class="tag">Sales</span>
-              <span class="tag">Agile</span>
-              <span class="tag">Research</span>
+          </li><li class="tech__row rv" data-part="ml" tabindex="0">
+            <span class="tech__n" aria-hidden="true">2</span>
+            <div class="tech__body">
+              <h3 class="tech__part">Aerodynamics<span class="tech__skill">Data Science &amp; ML · 12</span></h3>
+              <p class="tech__note">Models that learn from the data stream.</p>
+              <p class="tech__items">Pandas <span aria-hidden="true">/</span> NumPy <span aria-hidden="true">/</span> Scikit-Learn <span aria-hidden="true">/</span> TensorFlow <span aria-hidden="true">/</span> Keras <span aria-hidden="true">/</span> PyTorch <span aria-hidden="true">/</span> OpenCV <span aria-hidden="true">/</span> NLTK <span aria-hidden="true">/</span> Matplotlib <span aria-hidden="true">/</span> Seaborn <span aria-hidden="true">/</span> EDA <span aria-hidden="true">/</span> Feature Engineering</p>
             </div>
-          </div>
-        </article>
-
+          </li><li class="tech__row rv" data-part="bi" tabindex="0">
+            <span class="tech__n" aria-hidden="true">3</span>
+            <div class="tech__body">
+              <h3 class="tech__part">Telemetry<span class="tech__skill">Analytics &amp; BI · 10</span></h3>
+              <p class="tech__note">Reading the numbers and reporting them.</p>
+              <p class="tech__items">Power BI <span aria-hidden="true">/</span> Tableau <span aria-hidden="true">/</span> IBM Cognos <span aria-hidden="true">/</span> Excel <span aria-hidden="true">/</span> Google Sheets <span aria-hidden="true">/</span> MySQL <span aria-hidden="true">/</span> PostgreSQL <span aria-hidden="true">/</span> MongoDB <span aria-hidden="true">/</span> Statistics <span aria-hidden="true">/</span> A/B Testing</p>
+            </div>
+          </li><li class="tech__row rv" data-part="web" tabindex="0">
+            <span class="tech__n" aria-hidden="true">4</span>
+            <div class="tech__body">
+              <h3 class="tech__part">Chassis<span class="tech__skill">Web &amp; App Dev · 09</span></h3>
+              <p class="tech__note">The structure people actually touch.</p>
+              <p class="tech__items">React <span aria-hidden="true">/</span> Node.js <span aria-hidden="true">/</span> Express <span aria-hidden="true">/</span> Tailwind CSS <span aria-hidden="true">/</span> Bootstrap <span aria-hidden="true">/</span> Flask <span aria-hidden="true">/</span> REST APIs <span aria-hidden="true">/</span> Supabase <span aria-hidden="true">/</span> Firebase</p>
+            </div>
+          </li><li class="tech__row rv" data-part="tools" tabindex="0">
+            <span class="tech__n" aria-hidden="true">5</span>
+            <div class="tech__body">
+              <h3 class="tech__part">Tyres<span class="tech__skill">Tools &amp; Platforms · 09</span></h3>
+              <p class="tech__note">The kit that meets the road every day.</p>
+              <p class="tech__items">Git <span aria-hidden="true">/</span> GitHub <span aria-hidden="true">/</span> VS Code <span aria-hidden="true">/</span> Jupyter <span aria-hidden="true">/</span> Google Colab <span aria-hidden="true">/</span> Linux <span aria-hidden="true">/</span> Docker <span aria-hidden="true">/</span> Postman <span aria-hidden="true">/</span> Figma</p>
+            </div>
+          </li><li class="tech__row rv" data-part="soft" tabindex="0">
+            <span class="tech__n" aria-hidden="true">6</span>
+            <div class="tech__body">
+              <h3 class="tech__part">Cockpit<span class="tech__skill">Soft &amp; Domain · 08</span></h3>
+              <p class="tech__note">How I work with the people around me.</p>
+              <p class="tech__items">Prompt Engineering <span aria-hidden="true">/</span> Problem Solving <span aria-hidden="true">/</span> Public Speaking <span aria-hidden="true">/</span> Leadership <span aria-hidden="true">/</span> Marketing <span aria-hidden="true">/</span> Sales <span aria-hidden="true">/</span> Agile <span aria-hidden="true">/</span> Research</p>
+            </div>
+          </li></ol>
       </div>
     </div>
   </section>
 
-  <!-- Experience Section -->
-  <section class="section" id="experience">
-    <div class="container">
-      <div class="section-header fade-up">
-        <span class="eyebrow">03 — Journey</span>
-        <h2 class="title">Where I've <span class="text-gradient">been.</span></h2>
-        <p class="lede">A timeline of the roles, internships and leadership work that shaped how I think
-          about engineering today.</p>
-      </div>
-      <div class="timeline">
-        <div class="timeline-item fade-up">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content glass-card">
-            <span class="date">Dec 2025 - Present</span>
-            <h3>Marketing & Sales Head</h3>
-            <span class="company">Zeeniith Technology</span>
-            <p>Leading digital strategy and driving growth for a modern software development and digital
-              marketing agency — bridging tech and business storytelling.</p>
-          </div>
+  <section class="back" id="contact" data-name="Get in touch" data-n="5" aria-labelledby="contact-title">
+    <div class="wrap">
+      <div class="back__grid">
+        <div class="back__copy">
+          <p class="cap back__kicker">05 · Get in touch</p>
+          <h2 class="back__title" id="contact-title">Let's talk.</h2>
+          <p class="back__lead">Open to internships and entry-level roles in data analytics, data science, and AI and machine learning.</p>
         </div>
-
-        <div class="timeline-item fade-up">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content glass-card">
-            <span class="date">May 2026 - July 2026</span>
-            <h3>Summer Research Intern</h3>
-            <span class="company">Dhirubhai Ambani University (formerly DA-IICT)</span>
-            <p>Research intern in the AI &amp; healthcare-technology group, focused on problem-solving and
-              developing practical solutions for medication adherence in patients.</p>
-          </div>
-        </div>
-
-        <div class="timeline-item fade-up">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content glass-card">
-            <span class="date">May 2025 - July 2025</span>
-            <h3>IEEE R10 ACEI Entrepreneurship Ambassador</h3>
-            <span class="company">IEEE Region 10 (Asia-Pacific)</span>
-            <p>Supporting and advocating for entrepreneurial activity across the student community,
-              co-creating initiatives tied to Region 10's innovation strategy and connecting with
-              changemakers building real impact.</p>
-          </div>
-        </div>
-
-        <div class="timeline-item fade-up">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content glass-card">
-            <span class="date">May 2025 - June 2025</span>
-            <h3>Business Analyst Intern</h3>
-            <span class="company">Cognifyz Technologies</span>
-            <p>Spent two months deep in data analysis and shipped solutions that mattered:</p>
-            <ul class="timeline-list">
-              <li>Built interactive dashboards and data-visualization tools.</li>
-              <li>Developed analytical models to identify business trends.</li>
-              <li>Created reporting systems that streamlined decision-making.</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="timeline-item fade-up">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content glass-card">
-            <span class="date">Jan 2025 - July 2025</span>
-            <h3>Joint Treasurer & Branch Coordinator</h3>
-            <span class="company">IEEE GCET Student Branch</span>
-            <p>Managed financial tracking and budget allocation for branch events across the semester,
-              coordinated IEEE activities for IT, Chemical and Civil branches, and organized technical
-              events and workshops engaging 3 engineering departments.</p>
-          </div>
-        </div>
-
-        <div class="timeline-item fade-up">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content glass-card">
-            <span class="date">2023 - Present</span>
-            <h3>B.Tech in Information Technology</h3>
-            <span class="company">G H Patel College of Engineering & Technology (GCET), Anand</span>
-            <p>Pursuing my engineering degree with a focus on Data Structures, Machine Learning,
-              Web Technologies and Cybersecurity — currently in my final year.</p>
-          </div>
+        <div class="back__side">
+          <p class="cap back__label">Email</p>
+          <p class="back__addr"><a href="mailto:adityavalaki1110@gmail.com" id="emailAddr">adityavalaki1110@gmail.com</a></p>
+          <button class="copy" type="button" data-copy="adityavalaki1110@gmail.com"><svg class="ico" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="1"/><path d="M5 15V5a1 1 0 0 1 1-1h10"/></svg><span>Copy address</span></button>
+          <ul class="back__links">
+            <li><a class="link link--light" href="https://www.linkedin.com/in/aditya-j-valaki/" target="_blank" rel="noopener noreferrer">LinkedIn <svg class="ico" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></li>
+            <li><a class="link link--light" href="https://github.com/Adityavalaki" target="_blank" rel="noopener noreferrer">GitHub <svg class="ico" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></li>
+            <li><a class="link link--light" href="https://instagram.com/_._adityavalaki_1110" target="_blank" rel="noopener noreferrer">Instagram <svg class="ico" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></li>
+          </ul>
         </div>
       </div>
+      <form class="form" id="contactForm" action="https://api.web3forms.com/submit" method="post" novalidate>
+        <div class="field"><label for="cf-name">Name</label><input id="cf-name" name="name" type="text" autocomplete="name" required maxlength="80"></div>
+        <div class="field"><label for="cf-email">Email</label><input id="cf-email" name="email" type="email" autocomplete="email" required maxlength="120"></div>
+        <div class="field field--wide"><label for="cf-message">Message</label><textarea id="cf-message" name="message" rows="4" required minlength="10" maxlength="2000"></textarea></div>
+        <div class="field field--trap" aria-hidden="true"><label for="cf-company">Company</label><input id="cf-company" name="company" type="text" tabindex="-1" autocomplete="off"></div>
+        <div class="form__foot"><button class="btn btn--light" type="submit" id="cf-submit">Send message</button><p class="form__status" id="cf-status" role="status" aria-live="polite"></p></div>
+      </form>
+      <footer class="colophon">
+        <span>© 2026 Aditya Valaki</span>
+        <span>Designed and coded with passion</span>
+        <a href="#top">Back to cover ↑</a>
+      </footer>
     </div>
   </section>
-
-  <!-- Projects Section -->
-  <section class="section" id="projects">
-    <div class="container">
-      <div class="section-header fade-up">
-        <span class="eyebrow">04 — Selected Work</span>
-        <h2 class="title">Things I've <span class="text-gradient">built.</span></h2>
-        <p class="lede">A handful of projects spanning machine learning, web apps, business analytics and
-          security — each one started as a "what if?".</p>
-      </div>
-      <div class="projects-grid">
-
-        <div class="project-card glass-card fade-up">
-          <div class="project-img"><i class="fas fa-flag-checkered"></i></div>
-          <div class="project-info">
-            <div class="project-tags">
-              <span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">React</span><span class="tag">Data Modeling</span>
-            </div>
-            <h3>Racecraft</h3>
-            <p>An F1 race replay and strategy workbench built on public timing data — replays every session since
-              2023 on a live track map with full telemetry, and models tyre wear, pit-stop cost, undercuts and
-              race-win odds, each one backtested against real results.</p>
-            <div class="project-links">
-              <a href="https://github.com/Adityavalaki/racecraft" target="_blank" rel="noopener" class="project-link"><i
-                  class="fab fa-github"></i> Code <i class="fas fa-arrow-right"></i></a>
-            </div>
-          </div>
-        </div>
-
-        <div class="project-card glass-card fade-up">
-          <div class="project-img"><i class="fas fa-prescription-bottle-medical"></i></div>
-          <div class="project-info">
-            <div class="project-tags">
-              <span class="tag">React Native</span><span class="tag">AI / OCR</span><span class="tag">Supabase</span>
-            </div>
-            <h3>Medication AI App</h3>
-            <p>A mobile app that scans a handwritten prescription with AI and turns it into a dose plan —
-              meal-time reminders, adherence tracking and an emergency SOS that calls through three contacts.</p>
-            <div class="project-links">
-              <a href="https://github.com/Adityavalaki/Prescription-Description" target="_blank" rel="noopener" class="project-link"><i
-                  class="fab fa-github"></i> Code <i class="fas fa-arrow-right"></i></a>
-            </div>
-          </div>
-        </div>
-
-        <div class="project-card glass-card fade-up">
-          <div class="project-img"><i class="fas fa-shield-virus"></i></div>
-          <div class="project-info">
-            <div class="project-tags">
-              <span class="tag">Python</span><span class="tag">ML</span><span class="tag">Computer Vision</span>
-            </div>
-            <h3>Visual Malware v3</h3>
-            <p>Malware detection system that converts binary files into grayscale images and classifies them
-              with a CNN — turning a security problem into a vision problem with high accuracy.</p>
-            <div class="project-links">
-              <a href="https://github.com/Adityavalaki/visual-malware-v3" target="_blank" rel="noopener" class="project-link"><i
-                  class="fab fa-github"></i> Code <i class="fas fa-arrow-right"></i></a>
-            </div>
-          </div>
-        </div>
-
-        <div class="project-card glass-card fade-up">
-          <div class="project-img"><i class="fas fa-wallet"></i></div>
-          <div class="project-info">
-            <div class="project-tags">
-              <span class="tag">JavaScript</span><span class="tag">Web App</span><span class="tag">Supabase</span>
-            </div>
-            <h3>SmartSpend</h3>
-            <p>A clean expense tracker with cloud sync, intelligent categorization and payment-method analytics
-              — built so I'd actually use it instead of yet another spreadsheet.</p>
-            <div class="project-links">
-              <a href="https://smartspend.dev" target="_blank" rel="noopener" class="project-link"><i
-                  class="fas fa-arrow-up-right-from-square"></i> Live App <i class="fas fa-arrow-right"></i></a>
-              <a href="https://github.com/Adityavalaki/smartspend" target="_blank" rel="noopener" class="project-link"><i
-                  class="fab fa-github"></i> Code <i class="fas fa-arrow-right"></i></a>
-            </div>
-          </div>
-        </div>
-
-        <div class="project-card glass-card fade-up">
-          <div class="project-img"><i class="fas fa-user-secret"></i></div>
-          <div class="project-info">
-            <div class="project-tags">
-              <span class="tag">Python</span><span class="tag">NLP</span><span class="tag">AI</span>
-            </div>
-            <h3>FakeShield</h3>
-            <p>Fake-news detection system powered by Natural Language Processing — trained on real-world news
-              corpora to flag misinformation before it spreads.</p>
-            <div class="project-links">
-              <a href="https://github.com/Adityavalaki/fakeshield" target="_blank" rel="noopener" class="project-link"><i
-                  class="fab fa-github"></i> Code <i class="fas fa-arrow-right"></i></a>
-            </div>
-          </div>
-        </div>
-
-        <div class="project-card glass-card fade-up">
-          <div class="project-img"><i class="fas fa-chart-line"></i></div>
-          <div class="project-info">
-            <div class="project-tags">
-              <span class="tag">Python</span><span class="tag">Finance</span><span class="tag">Analytics</span>
-            </div>
-            <h3>StockSentinel</h3>
-            <p>A stock-market analysis tool that tracks tickers, computes indicators and surfaces sentiment
-              signals — built to make portfolio decisions a little less based on vibes.</p>
-            <div class="project-links">
-              <a href="https://github.com/Adityavalaki/Stocksentinel" target="_blank" rel="noopener" class="project-link"><i
-                  class="fab fa-github"></i> Code <i class="fas fa-arrow-right"></i></a>
-            </div>
-          </div>
-        </div>
-
-        <div class="project-card glass-card fade-up">
-          <div class="project-img"><i class="fas fa-store"></i></div>
-          <div class="project-info">
-            <div class="project-tags">
-              <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">Business Site</span>
-            </div>
-            <h3>Valaki Exports</h3>
-            <p>A clean, responsive website built for an exports business — focused on simple navigation,
-              fast loads and clear product storytelling for B2B buyers.</p>
-            <div class="project-links">
-              <a href="https://github.com/Adityavalaki/VALAKIEXPORTS" target="_blank" rel="noopener" class="project-link"><i
-                  class="fab fa-github"></i> Code <i class="fas fa-arrow-right"></i></a>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact Section -->
-  <section class="section" id="contact">
-    <div class="container">
-      <div class="contact-wrapper glass-card fade-up">
-        <div class="contact-info">
-          <h2>Let's build something <span class="text-gradient">amazing</span>.</h2>
-          <p>I'm actively seeking internship or entry-level opportunities in Data Analytics and Machine Learning. Reach
-            out, and let's connect!</p>
-          <div class="contact-links">
-            <a href="mailto:adityavalaki1110@gmail.com" class="c-link"><i class="fas fa-envelope"></i>
-              adityavalaki1110@gmail.com</a>
-            <a href="https://www.linkedin.com/in/aditya-j-valaki/" target="_blank" rel="noopener" class="c-link"><i
-                class="fab fa-linkedin"></i> LinkedIn Profile</a>
-            <a href="https://github.com/Adityavalaki" target="_blank" rel="noopener" class="c-link"><i class="fab fa-github"></i>
-              GitHub Profile</a>
-            <a href="https://instagram.com/_._adityavalaki_1110" target="_blank" rel="noopener" class="c-link"><i
-                class="fab fa-instagram"></i> Instagram</a>
-          </div>
-        </div>
-        <form class="contact-form" id="contactForm">
-          <div class="form-group">
-            <input type="text" id="contactName" placeholder="Name" required class="form-input">
-          </div>
-          <div class="form-group">
-            <input type="email" id="contactEmail" placeholder="Email" required class="form-input">
-          </div>
-          <div class="form-group">
-            <textarea id="contactMessage" placeholder="Your Message" required class="form-input" rows="4"></textarea>
-          </div>
-          <button type="submit" class="btn-primary btn-block"><i class="fas fa-paper-plane"></i> Send
-            Message</button>
-        </form>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container text-center">
-      <p>&copy; 2026 Aditya Valaki. Crafted with code and passion.</p>
-    </div>
-  </footer>
+</main>
 
   <script src="script.js"></script>
 </body>
