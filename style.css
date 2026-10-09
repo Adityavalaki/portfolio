@@ -143,6 +143,10 @@ button, input, textarea { font: inherit; color: inherit; }
 .cover__standfirst { font-family: var(--f-serif); font-size: clamp(27px, 3vw, 42px); line-height: 1.14; text-wrap: pretty; max-width: 20ch; }
 .cover__standfirst em { color: var(--red); }
 .cover__cta { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 24px; }
+.cv { flex-basis: 100%; display: flex; flex-wrap: wrap; align-items: center; gap: 0 18px; }
+.cv__label { font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mute); }
+.cv--light { margin-top: 4px; }
+.cv--light .cv__label { color: var(--on-ink-2); }
 .toc__label { color: var(--mute); margin-bottom: 8px; }
 .toc { border-top: 1px solid var(--ink); }
 .toc a { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 11px 0; border-bottom: 1px solid var(--rule); text-decoration: none; font-weight: 600; transition: color 0.2s, padding 0.3s var(--ease); }

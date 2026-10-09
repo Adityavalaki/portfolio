@@ -63,6 +63,7 @@
             <a class="btn" href="#garage">See the work</a>
             <a class="link" href="https://github.com/Adityavalaki" target="_blank" rel="noopener noreferrer">GitHub <svg class="ico" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
             <a class="link" href="https://www.linkedin.com/in/aditya-j-valaki/" target="_blank" rel="noopener noreferrer">LinkedIn <svg class="ico" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+            <span class="cv"><span class="cv__label">Curriculum vitae</span><a class="link" href="Aditya_Valaki_CV.pdf" target="_blank" rel="noopener">View <svg class="ico" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a><a class="link" href="Aditya_Valaki_CV.pdf" download="Aditya_Valaki_CV.pdf">Download <svg class="ico" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12M6 11l6 6 6-6M5 20h14"/></svg></a></span>
           </div>
           <nav aria-label="Contents">
             <p class="cap toc__label">In this issue</p>
@@ -129,13 +130,13 @@
             <td class="results__note">Rallied students across colleges for IEEE Gujarat Section entrepreneurship events.</td>
           </tr><tr class="rv">
             <td class="results__rd">R3</td>
-            <td class="results__date">May – Jun 2025</td>
+            <td class="results__date">May – Jul 2025</td>
             <th scope="row" class="results__role">Business Analyst Intern</th>
             <td class="results__team">Cognifyz Technologies</td>
-            <td class="results__note">Built dashboards, trend models, and reporting systems.</td>
+            <td class="results__note">EDA and correlation analysis on investment data, with dashboards for non-technical stakeholders.</td>
           </tr><tr class="rv">
             <td class="results__rd">R2</td>
-            <td class="results__date">Jan – Jul 2025</td>
+            <td class="results__date">Jan – Jun 2025</td>
             <th scope="row" class="results__role">Joint Treasurer &amp; Branch Coordinator</th>
             <td class="results__team">IEEE GCET Student Branch</td>
             <td class="results__note">Coordinated the Chemical and Civil branches and managed event budgets as Joint Treasurer.</td>
@@ -162,8 +163,8 @@
         <div class="feature__body rv">
           <p class="cap feature__kicker">Feature · Motorsport data</p>
           <h3 class="feature__title">Racecraft</h3>
-          <p class="feature__standfirst">F1 race replay and strategy workbench on public FastF1 timing data: lap-by-lap replays, tyre-degradation curves by compound and a pit-window prediction model, served by a FastAPI back end to a React front end.</p>
-          <ul class="tags"><li>Python</li><li>FastF1</li><li>Pandas</li><li>FastAPI</li><li>React</li></ul>
+          <p class="feature__standfirst">F1 race replay and strategy workbench on FastF1 timing data: per-compound tyre-degradation curves, undercut success rates by circuit and a regression model that predicts laps to the next pit stop, served by FastAPI to a React front end.</p>
+          <ul class="tags"><li>Python</li><li>FastF1</li><li>Pandas</li><li>scikit-learn</li><li>FastAPI</li><li>React</li></ul>
           <div class="feature__links"><a class="btn" href="https://github.com/Adityavalaki/racecraft" target="_blank" rel="noopener noreferrer">View code <svg class="ico" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></div>
         </div>
       </article>
@@ -171,32 +172,32 @@
           <span class="item__n">02</span>
           <div class="item__body">
             <h3 class="item__title">Medication AI App</h3>
-            <p>Mobile app that runs OCR on handwritten prescriptions and parses them into structured dose schedules, with reminders, adherence tracking and an SOS alert.</p>
-            <ul class="tags"><li>React Native</li><li>OCR</li><li>Supabase</li><li>PostgreSQL</li></ul>
+            <p>Reads handwritten prescriptions with a benchmarked multimodal LLM behind a FastAPI back end, snaps medicine names to a known list with RapidFuzz and routes low-confidence items to a verification step, with dose reminders and one-tap SOS in React Native.</p>
+            <ul class="tags"><li>Python</li><li>FastAPI</li><li>React Native (Expo)</li><li>RapidFuzz</li><li>LLM APIs</li></ul>
             
           </div>
         </li><li class="item rv" data-project="visual-malware">
           <span class="item__n">03</span>
           <div class="item__body">
             <h3 class="item__title">Visual Malware v3</h3>
-            <p>Turns executable binaries into grayscale byte-plot images and classifies malware families with a hybrid CNN and Random Forest model.</p>
-            <ul class="tags"><li>Python</li><li>CNN</li><li>Random Forest</li><li>Computer Vision</li></ul>
+            <p>Three-layer detector: an entropy pre-filter, an EfficientNetB0 CNN on grayscale byte-plot images (Malimg, 25 families) and a Random Forest on 69 PE-header features, fused by weighted scoring and served as a Streamlit app.</p>
+            <ul class="tags"><li>Python</li><li>TensorFlow / Keras</li><li>EfficientNetB0</li><li>scikit-learn</li><li>Streamlit</li></ul>
             
           </div>
         </li><li class="item rv" data-project="smartspend">
           <span class="item__n">04</span>
           <div class="item__body">
             <h3 class="item__title">SmartSpend</h3>
-            <p>Progressive web app for expense tracking with real-time cloud sync and transaction categorisation.</p>
-            <ul class="tags"><li>JavaScript</li><li>PWA</li><li>Firebase Firestore</li></ul>
+            <p>Personal finance tracker with income and expense recording, category-wise aggregation and budget-limit checks, with a data model ready for predictive expense analytics.</p>
+            <ul class="tags"><li>JavaScript</li><li>Python</li><li>HTML / CSS</li></ul>
             <div class="item__links"><a class="link" href="https://smartspend.dev" target="_blank" rel="noopener noreferrer">Live app <svg class="ico" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a><a class="link" href="https://github.com/Adityavalaki/smartspend" target="_blank" rel="noopener noreferrer">Code <svg class="ico" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></div>
           </div>
         </li><li class="item rv" data-project="fakeshield">
           <span class="item__n">05</span>
           <div class="item__body">
             <h3 class="item__title">FakeShield</h3>
-            <p>Fake-news detector built on DistilBERT fine-tuned on the WELFake dataset (93.2% accuracy, 5-fold cross-validated), with live RSS monitoring on a Flask-SocketIO dashboard.</p>
-            <ul class="tags"><li>Python</li><li>DistilBERT</li><li>NLP</li><li>Flask-SocketIO</li></ul>
+            <p>NLP misinformation detector: text cleaning, tokenisation and TF-IDF features feed supervised classifiers, and the output is a credibility score so borderline content goes to human review.</p>
+            <ul class="tags"><li>Python</li><li>NLP</li><li>TF-IDF</li><li>scikit-learn</li></ul>
             <div class="item__links"><a class="link" href="https://github.com/Adityavalaki/fakeshield" target="_blank" rel="noopener noreferrer">Code <svg class="ico" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></div>
           </div>
         </li></ol>
@@ -292,6 +293,7 @@
             <li><a class="link link--light" href="https://github.com/Adityavalaki" target="_blank" rel="noopener noreferrer">GitHub <svg class="ico" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></li>
             <li><a class="link link--light" href="https://instagram.com/_._adityavalaki_1110" target="_blank" rel="noopener noreferrer">Instagram <svg class="ico" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></li>
           </ul>
+          <span class="cv cv--light"><span class="cv__label">Curriculum vitae</span><a class="link link--light" href="Aditya_Valaki_CV.pdf" target="_blank" rel="noopener">View <svg class="ico" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a><a class="link link--light" href="Aditya_Valaki_CV.pdf" download="Aditya_Valaki_CV.pdf">Download <svg class="ico" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12M6 11l6 6 6-6M5 20h14"/></svg></a></span>
         </div>
       </div>
       <form class="form" id="contactForm" action="https://api.web3forms.com/submit" method="post" novalidate>
