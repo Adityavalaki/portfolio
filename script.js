@@ -10,30 +10,27 @@
   var $$ = function (s, r) { return Array.prototype.slice.call((r || doc).querySelectorAll(s)); };
   var pad = function (n) { return String(n).padStart(2, '0'); };
 
-  /* ---------- loading intro: start lights, then lights out ---------- */
+  /* ---------- loading intro: one lap of the racing line, then fade ---------- */
   var loader = $('#loader');
   if (loader && !doc.documentElement.classList.contains('intro-seen')) {
-    var lamps = $$('.loader__lights span', loader);
-    var lit = reduce || !lamps.length;            // reduced motion: lights are already on
+    var lap = $('.loader__lap', loader);
+    var lapped = reduce || !lap;                  // reduced motion: the line is drawn already
     var loaded = doc.readyState === 'complete';
     var started = false;
-    var lightsOut = function () {
+    var finish = function () {
       if (started) return;
       started = true;
       setTimeout(function () {
-        loader.classList.add('is-out');
-        setTimeout(function () {
-          loader.classList.add('is-done');
-          setTimeout(function () { loader.remove(); }, 600);
-        }, reduce ? 400 : 850);
-      }, reduce ? 0 : 350);
+        loader.classList.add('is-done');
+        setTimeout(function () { loader.remove(); }, 600);
+      }, reduce ? 600 : 250);
       try { sessionStorage.setItem('introSeen', '1'); } catch (e) {}
     };
-    var maybeGo = function () { if (lit && loaded) lightsOut(); };
-    if (!lit) lamps[lamps.length - 1].addEventListener('animationend', function () { lit = true; maybeGo(); });
+    var maybeGo = function () { if (lapped && loaded) finish(); };
+    if (!lapped) lap.addEventListener('animationend', function () { lapped = true; maybeGo(); });
     if (!loaded) window.addEventListener('load', function () { loaded = true; maybeGo(); });
     maybeGo();
-    setTimeout(lightsOut, 4500);      // never hold the page on a slow asset
+    setTimeout(finish, 4000);         // never hold the page on a slow asset
   } else if (loader) {
     loader.remove();
   }
