@@ -13,6 +13,8 @@
   <script>
     /* Runs before first paint so CSS can tell "script available" from "no script". */
     document.documentElement.classList.replace('no-js', 'js');
+    /* The start-lights intro plays once per visit; skip it on later page loads. */
+    try { if (sessionStorage.getItem('introSeen')) document.documentElement.classList.add('intro-seen'); } catch (e) {}
   </script>
   <!-- Vercel Web Analytics -->
   <script>
@@ -22,6 +24,16 @@
 </head>
 
 <body>
+  <!-- Loading intro: F1 start lights -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader__in">
+      <p class="cap loader__kicker">Aditya Valaki · Portfolio</p>
+      <div class="loader__lights"><span style="--i:0"></span><span style="--i:1"></span><span style="--i:2"></span><span style="--i:3"></span><span style="--i:4"></span></div>
+      <p class="loader__msg"><span class="loader__wait">Warming up the tyres</span><span class="loader__go">Lights out and away we go</span></p>
+      <p class="cap loader__note"><span>Data &amp; ML by profession</span> · <span>Formula 1 fan at heart</span></p>
+    </div>
+  </div>
+
   <a class="skip" href="#main">Skip to content</a>
 
   <header class="mast" id="top">
@@ -29,7 +41,7 @@
       <span class="cap mast__season">Season 2026</span>
       <a class="mast__name" href="#top">Aditya Valaki</a>
       <nav class="mast__nav cap" aria-label="Sections">
-        <a href="#profile">Profile</a><a href="#season">Season</a><a href="#garage">Garage</a><a href="#spec">Spec</a><a href="#contact">Contact</a>
+        <a href="#profile">Profile</a><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#spec">Spec</a><a href="#contact">Contact</a>
       </nav>
       <button class="mast__menu" type="button" data-contents aria-expanded="false" aria-controls="contents">Contents</button>
     </div>
@@ -47,7 +59,7 @@
   <div class="contents" id="contents" hidden>
     <div class="contents__panel" role="dialog" aria-modal="true" aria-labelledby="contentsTitle">
       <div class="contents__head"><p class="cap" id="contentsTitle">Contents</p><button class="contents__close" type="button" id="contentsClose">Close</button></div>
-      <ol><li><a href="#profile"><span>The profile</span><span class="num">01</span></a></li><li><a href="#season"><span>The season</span><span class="num">02</span></a></li><li><a href="#garage"><span>The garage</span><span class="num">03</span></a></li><li><a href="#spec"><span>Technical specification</span><span class="num">04</span></a></li><li><a href="#contact"><span>Get in touch</span><span class="num">05</span></a></li></ol>
+      <ol><li><a href="#profile"><span>The profile</span><span class="num">01</span></a></li><li><a href="#experience"><span>Experience</span><span class="num">02</span></a></li><li><a href="#projects"><span>Projects</span><span class="num">03</span></a></li><li><a href="#spec"><span>Technical specification</span><span class="num">04</span></a></li><li><a href="#contact"><span>Get in touch</span><span class="num">05</span></a></li></ol>
     </div>
   </div>
 <main id="main">
@@ -60,14 +72,14 @@
         <div class="cover__deck">
           <p class="cover__standfirst">Finding the <em>signal</em> in messy data. I analyse it, model it and build machine learning that turns it into decisions people can act on.</p>
           <div class="cover__cta">
-            <a class="btn" href="#garage">See the work</a>
+            <a class="btn" href="#projects">See the work</a>
             <a class="link" href="https://github.com/Adityavalaki" target="_blank" rel="noopener noreferrer">GitHub <svg class="ico" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
             <a class="link" href="https://www.linkedin.com/in/aditya-j-valaki/" target="_blank" rel="noopener noreferrer">LinkedIn <svg class="ico" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
             <span class="cv"><span class="cv__label">Curriculum vitae</span><a class="link" href="Aditya_Valaki_CV.pdf" target="_blank" rel="noopener">View <svg class="ico" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a><a class="link" href="Aditya_Valaki_CV.pdf" download="Aditya_Valaki_CV.pdf">Download <svg class="ico" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12M6 11l6 6 6-6M5 20h14"/></svg></a></span>
           </div>
           <nav aria-label="Contents">
             <p class="cap toc__label">In this issue</p>
-            <ol class="toc"><li><a href="#profile"><span>The profile</span><span class="num">01</span></a></li><li><a href="#season"><span>The season</span><span class="num">02</span></a></li><li><a href="#garage"><span>The garage</span><span class="num">03</span></a></li><li><a href="#spec"><span>Technical specification</span><span class="num">04</span></a></li><li><a href="#contact"><span>Get in touch</span><span class="num">05</span></a></li></ol>
+            <ol class="toc"><li><a href="#profile"><span>The profile</span><span class="num">01</span></a></li><li><a href="#experience"><span>Experience</span><span class="num">02</span></a></li><li><a href="#projects"><span>Projects</span><span class="num">03</span></a></li><li><a href="#spec"><span>Technical specification</span><span class="num">04</span></a></li><li><a href="#contact"><span>Get in touch</span><span class="num">05</span></a></li></ol>
           </nav>
         </div>
         <figure class="cover__photo" data-parallax>
@@ -96,17 +108,17 @@
         <dl class="spec rv"><div><dt>Name</dt><dd>Aditya Valaki</dd></div><div><dt>From</dt><dd>Bhavnagar, Gujarat</dd></div><div><dt>Studying</dt><dd>B.Tech, Information Technology, GCET Anand</dd></div><div><dt>Focus</dt><dd>Data analytics, data science, AI and machine learning</dd></div><div><dt>Open to</dt><dd>Internships and entry-level roles in data analysis, data science, and AI and ML</dd></div></dl>
         <div class="story rv"><p class="story__lead">Final-year B.Tech Information Technology student at G H Patel College of Engineering and Technology, Anand, building a career in data analytics, data science and machine learning.</p><p>My work sits where data meets decisions: cleaning and exploring messy datasets, building dashboards, trend models and reports, and training machine learning models for vision and language problems. Recent projects range from an F1 strategy workbench on public timing data to CNN-based malware classification and NLP fake-news detection.</p><p>Off the clock, I trade datasets for open roads: long rides on my bike, trips to places I have not explored yet, and a camera to frame whatever I find along the way.</p></div>
       </div>
-      <h3 class="cap sub">Roles off track</h3>
+      <h3 class="cap sub"><b>Leadership roles</b></h3>
       <ul class="roles"><li class="rv"><span class="cap">Zeeniith Technology</span><b>Marketing &amp; Sales Head</b></li><li class="rv"><span class="cap">IEEE GCET Student Branch</span><b>Joint Treasurer &amp; Branch Coordinator</b></li><li class="rv"><span class="cap">IEEE Region 10</span><b>ACEI Entrepreneurship Ambassador</b></li></ul>
     </div>
   </section>
 
-  <section class="sec" id="season" data-name="The season" data-n="2" aria-labelledby="season-title">
+  <section class="sec" id="experience" data-name="Experience" data-n="2" aria-labelledby="experience-title">
     <div class="wrap">
       
       <header class="sec__head rv">
-        <h2 class="sec__title" id="season-title"><span class="sec__no">02</span><span class="sec__name">The season</span></h2>
-        <p class="sec__deck">Every role so far, newest first, set out like a results sheet.</p>
+        <h2 class="sec__title" id="experience-title"><span class="sec__no">02</span><span class="sec__name">Experience</span></h2>
+        <p class="sec__deck">Internships, roles and education, with the most recent first.</p>
       </header>
       <table class="results">
         <thead><tr><th scope="col">Rd</th><th scope="col">Dates</th><th scope="col">Role</th><th scope="col">Team</th><th scope="col">Notes</th></tr></thead>
@@ -157,12 +169,12 @@
     </div>
   </section>
 
-  <section class="sec" id="garage" data-name="The garage" data-n="3" aria-labelledby="garage-title">
+  <section class="sec" id="projects" data-name="Projects" data-n="3" aria-labelledby="projects-title">
     <div class="wrap">
       
       <header class="sec__head rv">
-        <h2 class="sec__title" id="garage-title"><span class="sec__no">03</span><span class="sec__name">The garage</span></h2>
-        <p class="sec__deck">Five projects. The feature is the one closest to the paddock.</p>
+        <h2 class="sec__title" id="projects-title"><span class="sec__no">03</span><span class="sec__name">Projects</span></h2>
+        <p class="sec__deck">Selected work in data analytics, machine learning and software, with the featured project first.</p>
       </header>
       <article class="feature" data-project="racecraft">
         <span class="feature__no" aria-hidden="true" data-float>01</span>

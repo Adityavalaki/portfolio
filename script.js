@@ -10,6 +10,34 @@
   var $$ = function (s, r) { return Array.prototype.slice.call((r || doc).querySelectorAll(s)); };
   var pad = function (n) { return String(n).padStart(2, '0'); };
 
+  /* ---------- loading intro: start lights, then lights out ---------- */
+  var loader = $('#loader');
+  if (loader && !doc.documentElement.classList.contains('intro-seen')) {
+    var lamps = $$('.loader__lights span', loader);
+    var lit = reduce || !lamps.length;            // reduced motion: lights are already on
+    var loaded = doc.readyState === 'complete';
+    var started = false;
+    var lightsOut = function () {
+      if (started) return;
+      started = true;
+      setTimeout(function () {
+        loader.classList.add('is-out');
+        setTimeout(function () {
+          loader.classList.add('is-done');
+          setTimeout(function () { loader.remove(); }, 600);
+        }, reduce ? 400 : 850);
+      }, reduce ? 0 : 350);
+      try { sessionStorage.setItem('introSeen', '1'); } catch (e) {}
+    };
+    var maybeGo = function () { if (lit && loaded) lightsOut(); };
+    if (!lit) lamps[lamps.length - 1].addEventListener('animationend', function () { lit = true; maybeGo(); });
+    if (!loaded) window.addEventListener('load', function () { loaded = true; maybeGo(); });
+    maybeGo();
+    setTimeout(lightsOut, 4500);      // never hold the page on a slow asset
+  } else if (loader) {
+    loader.remove();
+  }
+
   /* ---------- running header + scroll-linked type ---------- */
   var runner = $('#runner');
   var runnerSec = $('#runnerSec');
